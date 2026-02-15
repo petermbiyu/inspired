@@ -10,6 +10,9 @@ app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+// register view engine
+app.set("view engine", "ejs");
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
