@@ -7,7 +7,7 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "dev": "concurrently \"npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch\" \"nodemon server.js\"",
+    "dev": "concurrently \"npx @tailwindcss/cli -i ./public/css/input.css -o ./public/css/output.css --watch\" \"nodemon server.js\"",
     "start": "node server.js"
   },
   "dependencies": {
