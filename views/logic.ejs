@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
+          Login Logic
+        </h2>
+      </div>
+    </div>
+
+    <section class="px-8 py-4 bg-blue-50">
+      <div
+        class="flex align-center flex-col gap-6 md:flex-row max-w-300 mx-auto my-2 md:my-[4rem] md:justify-between"
+      >
+        <div
+          class="w-120 p-4 my-8 mx-auto bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
+        >
+          <h2 class="text-2xl font-semibold text-center">tutor</h2>
+          <div class="text-[1.1rem] text-center italic">
+            Here, you will be able to create questions, accept submission and
+            assign assignment
+          </div>
+          <div class="w-full flex items-center justify-center">
+            <a
+              href="/login"
+              class="w-[50px] h-[50px] inline-flex justify-center items-center rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-8"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></a>
+          </div>
+        </div>
+        <div
+          class="w-120 p-4 my-8 mx-auto bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
+        >
+          <h2 class="text-2xl font-semibold text-center">Learner</h2>
+          <div class="text-[1.1rem] text-center italic">
+            Here, you will be able to access questions, submit inquiries and get
+            a score
+          </div>
+          <div class="w-full flex items-center justify-center">
+            <a
+              href="/login"
+              class="inline-flex items-center justify-center w-[50px] h-[50px] rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-8"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
