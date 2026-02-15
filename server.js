@@ -55,6 +55,9 @@ app.get("/passreset", (req, res) => {
 app.get("/signup", (req, res) => {
   res.render("signup");
 });
+app.get("/logic", (req, res) => {
+  res.render("logic");
+});
 app.get("/terms", (req, res) => {
   res.render("terms");
 });
