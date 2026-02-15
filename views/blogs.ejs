@@ -1,121 +1,15 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mbiyuInspired</title>
-    <link rel="stylesheet" href="./src/output.css" />
-    <!-- Slick Carousel CSS -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-    />
-    <!-- font-awesome -->
-    <script
-      src="https://kit.fontawesome.com/ad5b6e87a8.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
   <body
     class="bg-linear-to-r from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
   >
-    <!-- nav and intro -->
     <div>
-      <nav
-        class="w-full h-[60px] md:h-[70px] px-4 md:px-8 flex items-center justify-between bg-transparent text-white z-[999]"
-        aria-label="main navbar"
-      >
-        <!-- logo/brand -->
-        <div class="flex-shrink-0">
-          <a
-            href="?"
-            class="text-xl md:text-2xl lg:text-[2rem] font-bold text-yellow-400 hover:text-yellow-300 transition-colors"
-            >mbiyu<span class="text-white">inspired</span></a
-          >
-        </div>
-        <!-- desktop nav -->
-        <ul
-          class="hidden md:flex items-center px-4 h-full font-semibold space-x-1"
-        >
-          <li class="h-full">
-            <a
-              class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
-              href="index.html"
-              >Home</a
-            >
-          </li>
-          <li class="group h-full relative">
-            <span
-              class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg"
-              >Articles
-              <i class="fa-solid fa-chevron-down pl-[5px] text-[1rem]"></i
-            ></span>
-            <ul
-              class="hidden border-t border-t-3 bg-transparent backdrop-blur-lg border-t-yellow-500 w-[250px] absolute group-hover:block transition-all duration-300 ease"
-            >
-              <li class="my-[1rem] ml-[10px] px-4">
-                <a
-                  href="blogs.html"
-                  class="text-[1.1rem] hover:text-yellow-400 transition-all duration-300 ease"
-                  >Technology</a
-                >
-              </li>
-              <li class="my-[1rem] ml-[10px] px-4">
-                <a
-                  href="blogs.html"
-                  class="text-[1.1rem] hover:text-yellow-400 transition-all duration-300 ease"
-                  >Education</a
-                >
-              </li>
-              <li class="my-[1rem] ml-[10px] px-4">
-                <a
-                  href=""
-                  class="text-[1.1rem] hover:text-yellow-400 transition-all duration-300 ease"
-                  >Trending</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="h-full">
-            <a
-              class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
-              href="services.html"
-              >Services</a
-            >
-          </li>
-          <li class="h-full">
-            <a
-              class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
-              href="about.html"
-              >About</a
-            >
-          </li>
-          <li class="h-full">
-            <a
-              class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
-              href="contact.html"
-              >Contact</a
-            >
-          </li>
-        </ul>
-        <!-- login button -->
-        <div>
-          <a
-            href="./login.html"
-            class="hidden md:flex md:text-sm lg:text-xl font-semibold hover:text-indigo-500 rounded-full hover:bg-yellow-500 border border-solid border-2 border-white hover:border-yellow-500 transition-colors duration-300 ease p-[7px]"
-            ><i class="fa-solid fa-arrow-right text-[1rem]"></i
-          ></a>
-        </div>
-        <div class="md:hidden">
-          <i class="fa-solid fa-bars text-2xl cursor-pointer"></i>
-        </div>
-      </nav>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
       <div class="text-white py-3">
         <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
           Blogs - [name]
@@ -146,7 +40,7 @@
           <div
             class="px-4 pb-4 hover:text-blue-700 transition-all duration-300 text-[1rem] text-shadow-xl"
           >
-            <a href="./article.html"
+            <a href="./article"
               >Read more
               <i class="fa-solid fa-circle-chevron-right text-[1rem]"></i
             ></a>
@@ -173,7 +67,7 @@
           <div
             class="px-4 pb-4 hover:text-blue-700 transition-all duration-300 text-[1rem] text-shadow-xl"
           >
-            <a href="./article.html"
+            <a href="./article"
               >Read more
               <i class="fa-solid fa-circle-chevron-right text-[1rem]"></i
             ></a>
@@ -182,97 +76,9 @@
       </div>
     </section>
 
-    <footer class="text-white bg-transparent">
-      <div class="px-8 py-4 flex flex-wrap md:flex-row justify-between">
-        <div class="w-full md:w-80 mb-10">
-          <h2 class="text-xl lg:text-2xl font-semibold">Follow Us</h2>
-          <div
-            class="flex align-center justify-center md:justify-left gap-6 md:gap-4 lg:gap-6 pt-3 mt-3"
-          >
-            <a href=""
-              ><i
-                class="fa-brands fa-linkedin-in text-2xl p-3 border border-2 border-white rounded-full hover:bg-white hover:text-indigo-500 transition-all duration-400 ease"
-              ></i
-            ></a>
-            <a href=""
-              ><i
-                class="fa-brands fa-facebook text-2xl p-3 border border-2 border-white rounded-full hover:bg-white hover:text-indigo-500 transition-all duration-400 ease"
-              ></i
-            ></a>
-            <a href=""
-              ><i
-                class="fa-brands fa-twitter text-2xl p-3 border border-2 border-white rounded-full hover:bg-white hover:text-indigo-500 transition-all duration-400 ease"
-              ></i
-            ></a>
-            <a href=""
-              ><i
-                class="fa-brands fa-instagram text-2xl p-3 border border-2 border-white rounded-full hover:bg-white hover:text-indigo-500 transition-all duration-400 ease"
-              ></i
-            ></a>
-          </div>
-        </div>
-        <div class="w-full md:w-80 mt-4 md:mt-1">
-          <h2 class="text-2xl font-semibold">Quick Links</h2>
-          <ul
-            class="flex flex-col align-center justify-center md:justify-left mt-3 pr-3"
-          >
-            <li>
-              <a
-                href="./terms.html"
-                class="text-[1.2rem] font-semibold inline-bold hover:ml-[3px] transition-all duration-400 ease"
-                >Terms and Conditions</a
-              >
-            </li>
-            <li>
-              <a
-                href=""
-                class="text-[1.2rem] font-semibold inline-bold hover:ml-[3px] transition-all duration-400 ease"
-                >What's New</a
-              >
-            </li>
-            <li>
-              <a
-                href=""
-                class="text-[1.2rem] font-semibold inline-bold hover:ml-[3px] transition-all duration-400 ease"
-                >Our Services</a
-              >
-            </li>
-            <li>
-              <a
-                href=""
-                class="text-[1.2rem] font-semibold inline-bold hover:ml-[3px] transition-all duration-400 ease"
-                >Work With Us</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="w-full md:w-80 mt-4 md:mt-1">
-          <h2 class="text-2xl font-semibold">Subscribe to our Newsletter</h2>
-          <div class="text-center md:text-left">
-            <p class="text-[1.2rem] inline-bold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
-              quia.
-            </p>
-            <form action="/index.html" method="post" class="relative w-full">
-              <input
-                type="email"
-                placeholder="Enter Email"
-                aria-label="Enter email"
-                class="bg-white px-4 py-2 w-full text-black text-[1.1rem] border-none focus:outline-none"
-              />
-              <button
-                class="absolute right-0 bg-yellow-500 w-[5rem] h-full px-4 py-2 text-indigo-500 font-bold cursor-pointer"
-              >
-                <i class="fa-solid fa-arrow-right text-2xl"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="px-8 text-center text-[1.1rem] font-bold py-2 text-white">
-        Copyright &copy; 2026 mbiyuInspired | Powered by Mbiyu Design
-      </div>
-    </footer>
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./script.js"></script>

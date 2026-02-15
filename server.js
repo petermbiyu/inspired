@@ -28,6 +28,36 @@ app.listen(port, () => {
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.get("/services", (req, res) => {
+  res.render("services");
+});
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+app.get("/blogs", (req, res) => {
+  res.render("blogs");
+});
+app.get("/article", (req, res) => {
+  res.render("article");
+});
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+app.get("/reset", (req, res) => {
+  res.render("reset");
+});
+app.get("/passreset", (req, res) => {
+  res.render("passreset");
+});
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
 app.get((req, res) => {
   res.send("Oops! an error occurred");
 });
