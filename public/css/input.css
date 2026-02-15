@@ -63,7 +63,7 @@
   }
 }
 /* overall  */
-p {
+.blog-content {
   padding-bottom: 1rem;
   font-size: 1.2rem;
 }
