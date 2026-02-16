@@ -4,10 +4,11 @@ import "dotenv/config";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
+import { dbConnect } from "./config/DBConnect.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+dbConnect();
 // es_directory
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
