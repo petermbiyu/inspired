@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dbConnect } from "./config/DBConnect.js";
+import { authRouter } from "./routes/authRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,7 +26,10 @@ app.set("view engine", "ejs");
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
+// api endpoint
+app.use("/api/auth", authRouter);
 
+// ejs endpoint
 app.get("/", (req, res) => {
   res.render("index");
 });
