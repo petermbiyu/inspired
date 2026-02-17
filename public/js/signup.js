@@ -3,23 +3,37 @@ const formdata = document.getElementById("signup");
 formdata.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("user-name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirmpass = document.getElementById("confirm-password").value;
+  const name = document.getElementById("user-name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirmpass = document.getElementById("confirm-password").value.trim();
+  const message = document.getElementById("message");
 
-  if (!name || !email || !password || confirmpass) {
-    alert("Please fill all fields");
+  const submit = document.getElementById("submit");
+
+  if (!name || !email || !password || !confirmpass) {
+    message.textContent = "Please fill all fields!";
+    message.style.backgroundColor = "red";
+    message.style.color = "white";
     return;
   }
-  if (password < 6) {
-    alert("Password cannot must be at least 6 character");
+  if (password.length < 6) {
+    message.textContent = "Password must be at least 6 character!";
+    message.style.backgroundColor = "red";
+    message.style.color = "white";
+    return;
   }
-
+  if (password !== confirmpass) {
+    message.textContent = "Passwords do not match!";
+    message.style.backgroundColor = "red";
+    message.style.color = "white";
+    return;
+  }
+  // submit.disabled = true;
   try {
     const response = await fetch("/api/auth/signup", {
-      method: "post",
-      headers: { "content-type": "application/json" },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password, confirmpass }),
     });
 
@@ -27,10 +41,26 @@ formdata.addEventListener("submit", async (e) => {
     console.log("response: ", data);
 
     if (data.success) {
-      alert("signup success!");
-      window.location.href = "/login";
+      submit.textContent = "Submitting...";
+      message.textContent = "signup success! Redirecting...";
+      message.style.backgroundColor = "green";
+      message.style.color = "white";
+      formdata.reset();
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 3000);
     } else {
-      alert("Error: " + data.message);
+      message.textContent = "Error: " + data.message;
+      message.style.backgroundColor = "red";
+      message.style.color = "white";
+      submit.disabled = false;
     }
-  } catch (error) {}
+  } catch (error) {
+    message.textContent = "Something went wrong. Please try again!";
+    message.style.backgroundColor = "red";
+    message.style.color = "white";
+    console.error("Error: ", error);
+    submit.disabled = false;
+    submit.textContent = "Signup";
+  }
 });
