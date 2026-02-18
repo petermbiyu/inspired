@@ -5,7 +5,7 @@ formdata.addEventListener("submit", async (e) => {
 
   const name = document.getElementById("user-name").value.trim();
   const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const password = document.getElementById("signup-password").value.trim();
   const confirmpass = document.getElementById("confirm-password").value.trim();
   const message = document.getElementById("message");
 
