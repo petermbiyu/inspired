@@ -48,18 +48,23 @@
               class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
             />
           </div>
-          <div class="w-full mt-4">
+          <div class="w-full mt-4 relative">
             <label for="password" class="text-[1.2rem]"
-              >Passowrd <span class="text-red-500">*</span></label
+              >Password <span class="text-red-500">*</span></label
             >
             <input
               type="password"
               name="password"
-              id="password"
+              id="signup-password"
               class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
             />
+            <span
+              id="pass-sign-toggle"
+              class="absolute right-[10px] bottom-[10px] cursor-pointer"
+              ><i class="fa-solid fa-eye"></i
+            ></span>
           </div>
-          <div class="w-full mt-4">
+          <div class="w-full mt-4 relative">
             <label for="confirm-password" class="text-[1.2rem]"
               >Confirm Password <span class="text-red-500">*</span></label
             >
@@ -69,6 +74,11 @@
               id="confirm-password"
               class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
             />
+            <span
+              id="confirm-pass-sign-toggle"
+              class="absolute right-[10px] bottom-[10px] cursor-pointer"
+              ><i class="fa-solid fa-eye"></i
+            ></span>
           </div>
           <div class="w-full mt-8">
             <input
@@ -106,5 +116,6 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/signup.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
