@@ -63,6 +63,12 @@ app.get("/signup", (req, res) => {
 app.get("/logic", (req, res) => {
   res.render("logic");
 });
+app.get("/learning", (req, res) => {
+  res.render("learningArea");
+});
+app.get("/resources", (req, res) => {
+  res.render("resources");
+});
 app.get("/terms", (req, res) => {
   res.render("terms");
 });
