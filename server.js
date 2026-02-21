@@ -6,6 +6,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dbConnect } from "./config/DBConnect.js";
 import { authRouter } from "./routes/authRoutes.js";
+import { contactRoute } from "./routes/contactRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ app.listen(port, () => {
 });
 // api endpoint
 app.use("/api/auth", authRouter);
+app.use("/api/message", contactRoute);
 
 // ejs endpoint
 app.get("/", (req, res) => {

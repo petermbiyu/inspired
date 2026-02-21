@@ -20,11 +20,13 @@
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
+    "isemail": "^3.2.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.6",
     "multer": "^2.0.2",
     "nodemailer": "^8.0.1",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "validator": "^13.15.26"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

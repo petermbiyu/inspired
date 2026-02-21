@@ -67,3 +67,12 @@
   padding-bottom: 1rem;
   font-size: 1.2rem;
 }
+
+@keyframes marquee {
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-pause {
+  animation-play-state: paused;
+}
