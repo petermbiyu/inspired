@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
+          Blogs - [name]
+        </h2>
+      </div>
+    </div>
+
+    <section class="h-full w-full px-2 lg:px-8 py-2 lg:py-8 bg-blue-50">
+      <div class="py-8 w-full">
+        <div class="bg-white w-full max-w-250 shadow-xl mx-auto mb-4">
+          <img
+            src="./images/acad02.jpeg"
+            alt="academic"
+            class="w-full aspect-16/9"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-[1rem]">Education</h3>
+            <h2 class="font-bold text-2xl py-2">
+              Why is CBC education is giving senior school teachers a headache
+            </h2>
+            <p class="text-[1.1rem]">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
+              ducimus illum dolore illo vel nam iure impedit hic cupiditate?
+              Magni quo ipsa laudantium blanditiis aperiam distinctio, aliquam
+              porro soluta in.
+            </p>
+          </div>
+          <div
+            class="px-4 pb-4 hover:text-blue-700 transition-all duration-300 text-[1rem] text-shadow-xl"
+          >
+            <a href="./article"
+              >Read more
+              <i class="fa-solid fa-circle-chevron-right text-[1rem]"></i
+            ></a>
+          </div>
+        </div>
+        <div class="bg-white w-full max-w-250 shadow-xl mx-auto mb-4">
+          <img
+            src="./images/acad03.jpeg"
+            alt="academic"
+            class="w-full aspect-16/9"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-[1rem]">Education</h3>
+            <h2 class="font-bold text-2xl py-2">
+              Why is CBC education is giving senior school teachers a headache
+            </h2>
+            <p class="text-[1.1rem]">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
+              ducimus illum dolore illo vel nam iure impedit hic cupiditate?
+              Magni quo ipsa laudantium blanditiis aperiam distinctio, aliquam
+              porro soluta in.
+            </p>
+          </div>
+          <div
+            class="px-4 pb-4 hover:text-blue-700 transition-all duration-300 text-[1rem] text-shadow-xl"
+          >
+            <a href="./article"
+              >Read more
+              <i class="fa-solid fa-circle-chevron-right text-[1rem]"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

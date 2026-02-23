@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
+          Learning Area
+        </h2>
+      </div>
+    </div>
+
+    <section class="px-8 py-4 bg-blue-50">
+      <div>
+        <p class="text-center font-semibold text-xl md:text-2xl">
+          Please select a learning area below! Note that the list and content is
+          updated on a weekly basis
+        </p>
+        <form
+          method="post"
+          class="border border-indigo-300 border-1 w-full max-w-[50rem] mx-auto my-8 p-12 rounded-[5px] bg-white"
+        >
+          <div class="w-full mt-4">
+            <label for="email" class="text-[1.2rem]"
+              >Grade <span class="text-red-500">*</span></label
+            >
+            <select
+              name="grade"
+              id="grade"
+              class="w-full border-2 border-indigo-100 p-[10px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+              name="learningArea"
+            >
+              <option value="" selected disabled>Click to select level</option>
+              <option value="grade10">Grade 10</option>
+
+              <option value="form3">Form 3</option>
+              <option value="form4">Fotm 4</option>
+            </select>
+          </div>
+          <div class="w-full mt-4">
+            <label for="email" class="text-[1.2rem]"
+              >Pathway <span class="text-red-500">*</span></label
+            >
+            <select
+              name="learningArea"
+              id="learning-area"
+              class="w-full border-2 border-indigo-100 p-[10px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+            >
+              <option value="" selected disabled>Select a Pathway</option>
+              <option value="stem">STEM</option>
+              <option value="socialScience">Social Science</option>
+              <option value="sports">Sports and Art</option>
+              <option value="8-4-4">8-4-4</option>
+            </select>
+          </div>
+          <div class="w-full mt-4">
+            <label for="email" class="text-[1.2rem]"
+              >Learning Area <span class="text-red-500">*</span></label
+            >
+            <select
+              class="w-full border-2 border-indigo-100 p-[10px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+              name="learningArea"
+              id="learning-area"
+            >
+              <option value="" selected disabled>Select a learning area</option>
+              <option value="mathematics">Mathematics</option>
+              <option value="computer-science">Computer Science</option>
+              <option value="chemistry">Chemistry</option>
+              <option value="biology">Biology</option>
+            </select>
+          </div>
+          <div class="w-full mt-4">
+            <label for="email" class="text-[1.2rem]"
+              >Strand <span class="text-red-500">*</span></label
+            >
+            <select
+              name="grade"
+              id="grade"
+              class="w-full border-2 border-indigo-100 p-[10px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+              name="learningArea"
+            >
+              <option value="" selected disabled>Click to select strand</option>
+              <option value="strand1">
+                1.0 Foundation of Computer Science
+              </option>
+              <option value="strand2">2.0 Computer Networking</option>
+              <option value="strand3">3.0 Software Development</option>
+            </select>
+          </div>
+          <div class="w-full mt-8">
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              value="Access Resource"
+              class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] transition-all duration-300 hover:bg-indigo-200 focus:outline-none rounded-[5px] bg-indigo-100 cursor-pointer"
+            />
+          </div>
+          <a href="/resources">resources</a>
+          <div class="w-full border-y-2 overflow-hidden relative">
+            <div
+              class="absolute w-32 top-0 bottom-0 left-0 bg-linear-to-l from-transparent to-white z-100"
+            ></div>
+            <div
+              class="absolute w-32 top-0 bottom-0 right-0 bg-linear-to-l to-transparent from-white z-100"
+            ></div>
+            <div
+              class="flex flex-row flex-nowrap w-max py-2 animate-[marquee_40s_linear_infinite] hover:animate-pause font-bold italic bg-linear-to-r from-white via-transparent to-white"
+            >
+              <p class="whitespace-nowrap px-3 text-black">
+                Click on an asnwer to select it.
+              </p>
+              <p class="whitespace-nowrap px-3 text-blue-700">
+                Once selected, the selection cannot be undone.
+              </p>
+              <p class="whitespace-nowrap px-3 text-red-700">
+                Color red shows that the selection is incorrect.
+              </p>
+              <p class="whitespace-nowrap px-3 text-green-700">
+                Color green shows the selection is correct answer.
+              </p>
+              <p class="whitespace-nowrap px-3 text-cyan-700">
+                View your result at the last page.
+              </p>
+              <p class="whitespace-nowrap px-3 aria-hidden text-black-700">
+                Click on an asnwer to select it.
+              </p>
+              <p class="whitespace-nowrap px-3 aria-hidden text-blue-700">
+                Once selected the selection cannot be undone.
+              </p>
+              <p class="whitespace-nowrap px-3 aria-hidden text-red-700">
+                Color red shows that the selection is incorrect.
+              </p>
+              <p class="whitespace-nowrap px-3 aria-hidden text-green-700">
+                Color green shows the selection is correct answer.
+              </p>
+              <p class="whitespace-nowrap px-3 aria-hidden text-cyan-700">
+                View your result at the last page.
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+    </div>
+
+    <section class="h-full w-full px-2 lg:px-8 py-2 lg:py-20 bg-blue-50">
+      <div class="bg-white w-full max-w-250 shadow-xl mx-auto px-4 md:px-8">
+        <h2 class="font-bold text-xl md:text-2xl text-center py-8">
+          The questions have multiple answers. Choose the correct one
+        </h2>
+        <!-- question -->
+        <p class="font-bold text-2xl mb-4">
+          <span>1</span>. Explain why a mobile phone is regarded as a computer?
+        </p>
+        <!-- answer lists -->
+        <ul class="py-4">
+          <li
+            class="w-full border-2 p-2 mb-3 font-semibold italic text-[1rem] bg-blue-50 border-blue-200 hover:ml-[5px] cursor-pointer transition-all duration-300 ease"
+          >
+            Has a monitor, it's electronic, it's programmable, has a keypad, has
+            storage
+          </li>
+          <li
+            class="w-full border-2 p-2 mb-3 font-semibold italic text-[1rem] bg-blue-50 border-blue-200 hover:ml-[5px] cursor-pointer transition-all duration-300 ease"
+          >
+            can be used without power, has a screen,
+          </li>
+          <li
+            class="w-full border-2 p-2 mb-3 font-semibold italic text-[1rem] bg-blue-50 border-blue-200 hover:ml-[5px] cursor-pointer transition-all duration-300 ease"
+          >
+            can be used without power, has a screen,
+          </li>
+          <li
+            class="w-full border-2 p-2 mb-3 font-semibold italic text-[1rem] bg-blue-50 border-blue-200 hover:ml-[5px] cursor-pointer transition-all duration-300 ease"
+          >
+            can be used without power, has a screen,
+          </li>
+        </ul>
+        <div
+          class="w-full max-w-300 mx-auto flex align-center justify-between mb-4"
+        >
+          <a href="#" class="hover:text-blue-700 transition-colors duration-300"
+            ><i class="fa-solid fa-arrow-left"></i> Previous Question</a
+          >
+          <a href="#" class="hover:text-blue-700 transition-colors duration-300"
+            >Next QUestion <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

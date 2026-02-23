@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* slickjs */
+/* Custom styles for arrows */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.custom-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.next {
+  right: -20px;
+}
+
+.prev {
+  left: -20px;
+}
+
+/* Center container for better arrow positioning */
+.slider-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Fix for slick dots */
+.slick-dots li button:before {
+  font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #f97316; /* orange-400 */
+}
+
+/* animate*/
+.animate-bounce-y {
+  animation: bounceY 3s ease-in-out infinite;
+}
+@keyframes bounceY {
+  0%,
+  100% {
+    transform: translateY(1.2rem);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+/* overall  */
+.blog-content {
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+@keyframes marquee {
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-pause {
+  animation-play-state: paused;
+}

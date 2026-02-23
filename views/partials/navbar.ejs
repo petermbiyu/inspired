@@ -1,0 +1,86 @@
+<nav
+  class="w-full h-[60px] md:h-[70px] px-4 md:px-8 flex items-center justify-between bg-transparent text-white z-[999]"
+  aria-label="main navbar"
+>
+  <!-- logo/brand -->
+  <div class="flex-shrink-0">
+    <a
+      href="?"
+      class="text-xl md:text-2xl lg:text-[2rem] font-bold text-yellow-400 hover:text-yellow-300 transition-colors"
+      >mbiyu<span class="text-white">inspired</span></a
+    >
+  </div>
+  <!-- desktop nav -->
+  <ul class="hidden md:flex items-center px-4 h-full font-semibold space-x-1">
+    <li class="h-full">
+      <a
+        class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
+        href="/"
+        >Home</a
+      >
+    </li>
+    <li class="group h-full relative">
+      <span
+        class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg"
+        >Articles <i class="fa-solid fa-chevron-down pl-[5px] text-[1rem]"></i
+      ></span>
+      <ul
+        class="hidden border-t border-t-3 bg-transparent backdrop-blur-lg border-t-yellow-500 w-[250px] absolute group-hover:block transition-all duration-300 ease"
+      >
+        <li class="my-[1rem] ml-[10px] px-4">
+          <a
+            href="/blogs"
+            class="text-[1.1rem] hover:text-yellow-400 transition-all duration-300 ease"
+            >Technology</a
+          >
+        </li>
+        <li class="my-[1rem] ml-[10px] px-4">
+          <a
+            href="/blogs"
+            class="text-[1.1rem] hover:text-yellow-400 transition-all duration-300 ease"
+            >Education</a
+          >
+        </li>
+        <li class="my-[1rem] ml-[10px] px-4">
+          <a
+            href="/blogs"
+            class="text-[1.1rem] hover:text-yellow-400 transition-all duration-300 ease"
+            >Trending</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li class="h-full">
+      <a
+        class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
+        href="/services"
+        >Services</a
+      >
+    </li>
+    <li class="h-full">
+      <a
+        class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
+        href="/about"
+        >About</a
+      >
+    </li>
+    <li class="h-full">
+      <a
+        class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg border-b-3 border-transparent hover:border-b-3 hover:border-yellow-500"
+        href="/contact"
+        >Contact</a
+      >
+    </li>
+  </ul>
+  <!-- login button -->
+  <div>
+    <a
+      href="/logic"
+      class="hidden md:flex md:text-sm lg:text-xl font-semibold hover:text-indigo-500 rounded-full hover:bg-yellow-500 border border-solid border-2 border-white hover:border-yellow-500 transition-colors duration-300 ease p-[7px]"
+      ><i class="fa-solid fa-arrow-right text-[1rem]"></i
+    ></a>
+  </div>
+  <div class="md:hidden">
+    <i class="fa-solid fa-bars text-2xl cursor-pointer"></i>
+  </div>
+</nav>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
+          Reset Your Password
+        </h2>
+        <p class="text-center font-semibold">
+          <i class="fa-regular fa-envelope"></i> Enter the email associated with
+          your account and we'll send you password reset instructions.
+        </p>
+      </div>
+    </div>
+
+    <section class="h-full px-8 py-4 bg-blue-50">
+      <div>
+        <form
+          method="post"
+          class="border border-indigo-300 border-1 w-full max-w-[50rem] mx-auto my-8 p-12 rounded-[5px] bg-white"
+        >
+          <div class="w-full mt-4">
+            <label for="email" class="text-[1.2rem]"
+              >Email <span class="text-red-500">*</span></label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+            />
+          </div>
+
+          <div class="w-full mt-8">
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              value="Reset Instruction"
+              class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] transition-all duration-300 hover:bg-indigo-100 focus:outline-none rounded-[5px] bg-indigo-50 cursor-pointer"
+            />
+          </div>
+          <div class="flex flex-col md:flex-row mt-4">
+            <div class="w-full md:w-[50%] text-[1.2rem]">
+              <span
+                >Return to login?
+                <a href="/login" class="text-blue-700">Login</a></span
+              >
+            </div>
+            <div class="w-full md:w-[50%] text-[1.2rem]">
+              <span
+                >Reset Password
+                <a href="/passreset" class="text-blue-700">Reset page</a></span
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

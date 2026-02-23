@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
+          Deals and Services
+        </h2>
+      </div>
+    </div>
+    <section class="pt-[10px] h-full px-8 bg-blue-50">
+      <div class="mt-[1rem] md:mt-[2rem]">
+        <div
+          class="py-12 flex flex-row flex-wrap justify-center gap-6 mx-auto px-5"
+        >
+          <div
+            class="w-[320px] h-[400px] rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)]"
+          >
+            <div
+              class="relative bg-cyan-700 h-[150px] rounded-tl-[5px] rounded-tr-[5px]"
+            >
+              <img
+                src="/images/acad01.jpeg"
+                alt=""
+                class="w-[150px] h-[150px] top-[50px] left-[50%] translate-x-[-50%] p-1.5 border-8 bg-white border-cyan-700 rounded-full absolute"
+              />
+            </div>
+
+            <div class="pt-[50px] px-[10px]">
+              <h2 class="text-center font-semibold text-xl">Acadmics</h2>
+              <p class="text-[1.1rem]/[1.2rem] italic mt-4">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Debitis, vitae.
+              </p>
+            </div>
+            <a
+              href="/learning"
+              class="bg-cyan-700 w-[120px] text-center text-white font-semibold py-2 mt-6 block mx-auto hover:bg-cyan-800 transition-all duration-300 ease"
+            >
+              Learn more
+            </a>
+          </div>
+          <div
+            class="w-[320px] h-[400px] rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)]"
+          >
+            <div
+              class="relative bg-cyan-700 h-[150px] rounded-tl-[5px] rounded-tr-[5px]"
+            >
+              <img
+                src="/images/acad01.jpeg"
+                alt=""
+                class="w-[150px] h-[150px] top-[50px] left-[50%] translate-x-[-50%] p-1.5 border-8 bg-white border-cyan-700 rounded-full absolute"
+              />
+            </div>
+
+            <div class="pt-[50px] px-[10px]">
+              <h2 class="text-center font-semibold text-xl">Web Design</h2>
+              <p class="text-[1.1rem]/[1.2rem] italic mt-4">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Debitis, vitae.
+              </p>
+            </div>
+            <a
+              href=""
+              class="bg-cyan-700 w-[120px] text-center text-white font-semibold py-2 mt-6 block mx-auto hover:bg-cyan-800 transition-all duration-300 ease"
+            >
+              Learn more
+            </a>
+          </div>
+          <div
+            class="w-[320px] h-[400px] rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)]"
+          >
+            <div
+              class="relative bg-cyan-700 h-[150px] rounded-tl-[5px] rounded-tr-[5px]"
+            >
+              <img
+                src="/images/acad01.jpeg"
+                alt=""
+                class="w-[150px] h-[150px] top-[50px] left-[50%] translate-x-[-50%] p-1.5 border-8 bg-white border-cyan-700 rounded-full absolute"
+              />
+            </div>
+
+            <div class="pt-[50px] px-[10px]">
+              <h2 class="text-center font-semibold text-xl">Videos</h2>
+              <p class="text-[1.1rem]/[1.2rem] italic mt-4">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Debitis, vitae.
+              </p>
+            </div>
+            <a
+              href=""
+              class="bg-cyan-700 w-[120px] text-center text-white font-semibold py-2 mt-6 block mx-auto hover:bg-cyan-800 transition-all duration-300 ease"
+            >
+              Learn more
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

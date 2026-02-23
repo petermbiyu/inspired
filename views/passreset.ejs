@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("./partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("./partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold my-8 text-center">
+          Reset Password
+        </h2>
+      </div>
+    </div>
+
+    <section class="h-full px-8 py-4 bg-blue-50">
+      <div>
+        <form
+          method="post"
+          id="resetform"
+          class="border border-indigo-300 border-1 w-full max-w-[50rem] mx-auto my-8 p-12 rounded-[5px] bg-white"
+        >
+          <div
+            class="flex align-center flex-col md:flex-row gap-4 jsutify-start"
+          >
+            <div class="w-full">
+              <p class="font-bold text-center">
+                <i class="fa-solid fa-shield-halved"></i> Enter verification
+                code:
+              </p>
+              <div class="flex flex-row justify-center gap-[2px] md:gap-4">
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="otp-input w-[3rem] text-center border-2 border-indigo-100 p-[8px] text-[1.1rem] rounded-[5px] bg-indigo-50 focus:outline-indigo-300"
+                />
+
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="otp-input w-[3rem] text-center border-2 border-indigo-100 p-[8px] text-[1.1rem] rounded-[5px] bg-indigo-50 focus:outline-indigo-300"
+                />
+
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="otp-input w-[3rem] text-center border-2 border-indigo-100 p-[8px] text-[1.1rem] rounded-[5px] bg-indigo-50 focus:outline-indigo-300"
+                />
+
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="otp-input w-[3rem] text-center border-2 border-indigo-100 p-[8px] text-[1.1rem] rounded-[5px] bg-indigo-50 focus:outline-indigo-300"
+                />
+
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="otp-input w-[3rem] text-center border-2 border-indigo-100 p-[8px] text-[1.1rem] rounded-[5px] bg-indigo-50 focus:outline-indigo-300"
+                />
+
+                <input
+                  type="text"
+                  maxlength="1"
+                  class="otp-input w-[3rem] text-center border-2 border-indigo-100 p-[8px] text-[1.1rem] rounded-[5px] bg-indigo-50 focus:outline-indigo-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full mt-4">
+            <label for="password" class="text-[1.2rem]"
+              >Passowrd <span class="text-red-500">*</span></label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+            />
+          </div>
+          <div class="w-full mt-4">
+            <label for="confirm-password" class="text-[1.2rem]"
+              >Confirm Password <span class="text-red-500">*</span></label
+            >
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+            />
+          </div>
+          <div class="w-full mt-8">
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              value="Reset Passowrd"
+              class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] transition-all duration-300 hover:bg-indigo-100 focus:outline-none rounded-[5px] bg-indigo-50 cursor-pointer"
+            />
+          </div>
+          <div class="flex flex-col md:flex-row mt-4">
+            <div class="w-full md:w-[50%] text-[1.2rem]">
+              <span
+                >Have an account?
+                <a href="/login" class="text-blue-700">Login</a></span
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("./partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/resetpass.js"></script>
+  </body>
+</html>
