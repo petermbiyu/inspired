@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("../partials/adminHeader.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r min-h-[100vh] from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("../partials/adminNavbar.ejs")%>
+      <!-- end navbar -->
+    </div>
+
+    <section class="w-full bg-blue-100">
+      <div class="w-full h-full flex flex-col md:flex-row md:items-stretch">
+        <%-include ("../partials/sidebar.ejs")%>
+        <div
+          class="md:w-[80%] w-[100%] p-4 min-h-[calc(100vh-110px)] md:min-h-[calc(100vh-130px)]"
+        >
+          <h2 class="text-2xl md:text-4xl font-bold text-center">Posts</h2>
+          <div>
+            <a
+              href=""
+              class="py-3 px-4 bg-amber-500 text-white text-[1.1rem] shadow font-bold rounded-[3px]"
+            >
+              Add Post
+            </a>
+          </div>
+          <div class="mt-4">
+            <table class="border border-collapse border-gray-700 w-full">
+              <thead>
+                <tr>
+                  <th class="border border-collapse border-gray-700">No.</th>
+                  <th class="border border-collapse border-gray-700">Title</th>
+                  <th
+                    colspan="2"
+                    class="border border-collapse border-gray-700"
+                  >
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td class="border border-collapse border-gray-700">1</td>
+                  <td class="border border-collapse border-gray-700">
+                    This is a sample title
+                  </td>
+                  <td class="border border-collapse border-gray-700">edit</td>
+                  <td class="border border-collapse border-gray-700">delete</td>
+                </tr>
+                <tr>
+                  <td class="border border-collapse border-gray-700">2</td>
+                  <td class="border border-collapse border-gray-700">
+                    This is a sample title
+                  </td>
+                  <td class="border border-collapse border-gray-700">edit</td>
+                  <td class="border border-collapse border-gray-700">delete</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("../partials/adminFooter.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -76,8 +76,11 @@ app.get("/terms", (req, res) => {
 });
 
 // admin pages
-app.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+app.get("/admin", (req, res) => {
+  res.render("admin/admin");
+});
+app.get("/admin/posts", (req, res) => {
+  res.render("admin/post/posts");
 });
 
 app.get((req, res) => {
