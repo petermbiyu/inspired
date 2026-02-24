@@ -74,6 +74,12 @@ app.get("/resources", (req, res) => {
 app.get("/terms", (req, res) => {
   res.render("terms");
 });
+
+// admin pages
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard");
+});
+
 app.get((req, res) => {
   res.send("Oops! an error occurred");
 });
