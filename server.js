@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import { dbConnect } from "./config/DBConnect.js";
 import { authRouter } from "./routes/authRoutes.js";
 import { contactRoute } from "./routes/contactRoutes.js";
+import { postRoute } from "./routes/postRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,6 +31,7 @@ app.listen(port, () => {
 // api endpoint
 app.use("/api/auth", authRouter);
 app.use("/api/message", contactRoute);
+app.use("/api/admin", postRoute);
 
 // ejs endpoint
 app.get("/", (req, res) => {
@@ -82,6 +84,11 @@ app.get("/admin", (req, res) => {
 app.get("/admin/posts", (req, res) => {
   res.render("admin/post/posts");
 });
+app.get("/admin/add", (req, res) => {
+  res.render("admin/post/add");
+});
+
+// post upload
 
 app.get((req, res) => {
   res.send("Oops! an error occurred");
