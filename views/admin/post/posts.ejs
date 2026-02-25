@@ -27,7 +27,9 @@
             </a>
           </div>
           <div class="mt-4">
-            <table class="border-collapse w-full">
+            <table
+              class="border-collapse w-full md:w-[720px] lg:w-[980px] xl:w-[1240px] bg-white p-4 mx-auto"
+            >
               <thead
                 class="bg-cyan-700 border-b-2 text-white text-[1rem] border-cyan-300 font-bold tracking-wide text-left"
               >
@@ -38,29 +40,13 @@
                 </tr>
               </thead>
               <tbody class="text-left font-semibold">
-                <tr class="bg-white text-[1rem]">
-                  <td class="p-3">1</td>
+                <tr class="bg-cyan-50 text-[1rem]">
+                  <td class="p-3">1.</td>
                   <td class="p-3">This is a sample title</td>
-                  <td class="p-3">edit</td>
-                  <td class="p-3">delete</td>
-                </tr>
-                <tr class="bg-cyan-50 text-[1rem]">
-                  <td class="text-gray-700 p-3">2</td>
-                  <td class="text-gray-700 p-3">This is a sample title</td>
-                  <td class="text-gray-700 p-3">edit</td>
-                  <td class="text-gray-700 p-3">delete</td>
-                </tr>
-                <tr class="bg-white text-[1rem]">
-                  <td class="p-3 text-gray-700">3</td>
-                  <td class="p-3 text-gray-700">This is a sample title</td>
-                  <td class="p-3 text-gray-700">edit</td>
-                  <td class="p-3 text-gray-700">delete</td>
-                </tr>
-                <tr class="bg-cyan-50 text-[1rem]">
-                  <td class="text-gray-700 p-3">4</td>
-                  <td class="text-gray-700 p-3">This is a sample title</td>
-                  <td class="text-gray-700 p-3">edit</td>
-                  <td class="text-gray-700 p-3">delete</td>
+                  <td class="p-3 text-green-600">
+                    <a href="/admin/edit">Edit</a>
+                  </td>
+                  <td class="p-3 text-red-600">Delete</td>
                 </tr>
               </tbody>
             </table>

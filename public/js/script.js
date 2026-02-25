@@ -42,3 +42,36 @@ $(document).ready(function () {
     ],
   });
 });
+
+// cdk editor
+
+let editorInstance;
+
+ClassicEditor.create(document.querySelector("#editor"), {
+  toolbar: [
+    "undo",
+    "redo",
+    "|",
+    "heading",
+    "|",
+    "bold",
+    "italic",
+    "|",
+    "bulletedList",
+    "numberedList",
+    "|",
+    "link",
+    "blockQuote",
+    "|",
+    "insertTable",
+    "|",
+    "mediaEmbed",
+  ],
+})
+  .then((editor) => {
+    editorInstance = editor;
+    console.log("CKEditor initialized successfully");
+  })
+  .catch((error) => {
+    console.error(error);
+  });

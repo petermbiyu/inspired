@@ -87,6 +87,9 @@ app.get("/admin/posts", (req, res) => {
 app.get("/admin/add", (req, res) => {
   res.render("admin/post/add");
 });
+app.get("/admin/edit", (req, res) => {
+  res.render("admin/post/edit");
+});
 
 // post upload
 

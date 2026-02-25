@@ -76,3 +76,15 @@
 .animate-pause {
   animation-play-state: paused;
 }
+
+/* ckeditor */
+div.ck-editor__editable {
+  border: 2px solid rgba(0, 255, 255, 0.342) !important;
+
+  outline: none;
+  height: 20rem;
+}
+div.ck-editor__editable:focus {
+  outline: none !important;
+  background-color: 1px solid rgba(0, 255, 255, 0.199) !important;
+}

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData();
     const title = document.getElementById("title").value.trim();
-    const body = document.getElementById("body").value.trim();
+    const body = editorInstance.getData().trim();
     const slug = document.getElementById("slug").value.trim();
     const description = document.getElementById("description").value.trim();
     const image = document.getElementById("image").files[0];
