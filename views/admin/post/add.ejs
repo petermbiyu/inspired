@@ -58,6 +58,32 @@
                 ></textarea>
               </div>
               <div class="mb-4">
+                <label for="snippet" class="text-[1rem] font-semibold mb-2"
+                  >Snippet</label
+                ><br />
+                <textarea
+                  name="snippet"
+                  placeholder="Add post snippet"
+                  id="snippet"
+                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[5rem] resize-none rounded-[3px]"
+                ></textarea>
+              </div>
+              <div class="mb-4">
+                <label for="topic" class="text-[1rem] font-semibold mb-2"
+                  >Topic</label
+                >
+                <select
+                  name="topic"
+                  id="topic"
+                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full outline-none rounded-[3px]"
+                >
+                  <option selected disabled hidden>Select topic</option>
+                  <option value="education">Education</option>
+                  <option value="technology">Technology</option>
+                  <option value="trends">Trends</option>
+                </select>
+              </div>
+              <div class="mb-4">
                 <label for="title" class="text-[1rem] font-semibold mb-2"
                   >Slug</label
                 ><br />
@@ -113,6 +139,6 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <script src="/js/script.js"></script>
-    <script src="/js/postUpload.js"></script>
+    <script src="/js/addPost.js"></script>
   </body>
 </html>

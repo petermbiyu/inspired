@@ -8,6 +8,7 @@ import { dbConnect } from "./config/DBConnect.js";
 import { authRouter } from "./routes/authRoutes.js";
 import { contactRoute } from "./routes/contactRoutes.js";
 import { postRoute } from "./routes/postRoutes.js";
+import { topicRoutes } from "./routes/topicsRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -32,6 +33,7 @@ app.listen(port, () => {
 app.use("/api/auth", authRouter);
 app.use("/api/message", contactRoute);
 app.use("/api/admin", postRoute);
+app.use("/api/admin", topicRoutes);
 
 // ejs endpoint
 app.get("/", (req, res) => {
@@ -81,16 +83,23 @@ app.get("/terms", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("admin/admin");
 });
+//  admin posts
 app.get("/admin/posts", (req, res) => {
   res.render("admin/post/posts");
 });
-app.get("/admin/add", (req, res) => {
+app.get("/admin/add-post", (req, res) => {
   res.render("admin/post/add");
 });
 app.get("/admin/edit", (req, res) => {
   res.render("admin/post/edit");
 });
-
+// admin topics
+app.get("/admin/topics", (req, res) => {
+  res.render("admin/topics/topics");
+});
+app.get("/admin/add-topic", (req, res) => {
+  res.render("admin/topics/add");
+});
 // post upload
 
 app.get((req, res) => {

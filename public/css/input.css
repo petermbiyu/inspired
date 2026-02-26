@@ -88,3 +88,56 @@ div.ck-editor__editable:focus {
   outline: none !important;
   background-color: 1px solid rgba(0, 255, 255, 0.199) !important;
 }
+
+/* table styling */
+
+tbody tr td {
+  padding: 10px;
+  border-bottom: 2px solid rgb(159, 255, 255);
+}
+tbody tr:nth-child(even) {
+  background-color: rgba(232, 255, 255, 0.719);
+}
+
+td .edit {
+  color: rgb(0, 168, 0);
+}
+td .delete {
+  color: rgb(221, 0, 0);
+}
+
+/* animate message pop up */
+.animate {
+  overflow: hidden;
+}
+.animate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: green;
+  animation: slide 3s ease-out;
+}
+@keyframes slide {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* nav topic */
+.navlink {
+  margin: 1rem 0.8rem 0 0;
+  padding: 0 1rem;
+}
+.link {
+  font-size: 1.1rem;
+}
+.link:hover {
+  color: rgb(252, 206, 0);
+  transition: all 0.5s ease;
+}

@@ -11,13 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData();
     const title = document.getElementById("title").value.trim();
     const body = editorInstance.getData().trim();
+    const snippet = document.getElementById("snippet").value.trim();
     const slug = document.getElementById("slug").value.trim();
     const description = document.getElementById("description").value.trim();
     const image = document.getElementById("image").files[0];
     const message = document.getElementById("message");
     const submit = document.getElementById("submit");
 
-    if (!title || !body || !slug || !description || !image) {
+    if (!title || !body || !slug || !snippet || !description || !image) {
       message.textContent = "Missing Fields";
       return;
     }
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     message.textContent = "Uploading...";
     formData.append("title", title);
     formData.append("body", body);
+    formData.append("snippet", snippet);
     formData.append("slug", slug);
     formData.append("description", description);
     formData.append("image", image);
