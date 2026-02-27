@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await allpost();
     tbody.innerHTML = "";
 
-    if (!data || !data.allPost || data.allPost.length === 0) {
+    if (!data || !data.posts || data.posts.length === 0) {
       message.textContent = "No posts found.";
       return;
     }
 
-    data.allPost.forEach((tdata, index) => {
+    data.posts.forEach((post, index) => {
       const tr = document.createElement("tr");
       const tNo = document.createElement("td");
       const tTitle = document.createElement("td");
@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       const dlink = document.createElement("a");
 
       tNo.innerHTML = `${index + 1}.`;
-      tTitle.innerHTML = tdata.title;
+      tTitle.innerHTML = post.title;
       elink.href = "/admin/edit";
-      elink.innerHTML = "Edit";
+      elink.textContent = "Edit";
       elink.classList.add("edit");
       tedit.appendChild(elink);
       tdelete.appendChild(dlink);
       dlink.href = "/";
-      dlink.innerHTML = "Delete";
+      dlink.textContent = "Delete";
       dlink.classList.add("delete");
 
       tr.appendChild(tNo);

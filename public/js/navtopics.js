@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const li = document.createElement("li");
       li.classList.add("navlink");
       const link = document.createElement("a");
-      link.href = "/blogs";
+      link.href = `/blogs?topic=${tdata.topic}`.toLowerCase();
       link.textContent = tdata.topic;
       link.classList.add("link");
       li.appendChild(link);

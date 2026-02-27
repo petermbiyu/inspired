@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = document.getElementById("title").value.trim();
     const body = editorInstance.getData().trim();
     const snippet = document.getElementById("snippet").value.trim();
+    const topic = document.getElementById("topic").value.trim();
     const slug = document.getElementById("slug").value.trim();
     const description = document.getElementById("description").value.trim();
     const image = document.getElementById("image").files[0];
@@ -19,7 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const submit = document.getElementById("submit");
 
     if (!title || !body || !slug || !snippet || !description || !image) {
-      message.textContent = "Missing Fields";
+      message.textContent = "All fields are required";
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
       return;
     }
 
@@ -27,12 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("title", title);
     formData.append("body", body);
     formData.append("snippet", snippet);
+    formData.append("topic", topic);
     formData.append("slug", slug);
     formData.append("description", description);
     formData.append("image", image);
 
     submit.disabled = true;
+    message.style.display = "block";
     message.textContent = "Uploading...";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
 
     try {
       const response = await fetch("/api/admin/post", {
@@ -41,19 +54,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const data = await response.json();
+      console.log("data: ", data.message);
 
       if (data.success) {
-        ((message.textContent = "Upload successful"),
-          setTimeout(() => {
-            window.location.href = "/admin/posts";
-          }, 2000));
+        message.textContent = "Upload successful";
+        message.style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "/admin/posts";
+        }, 2500);
       } else {
+        message.style.display = "block";
         message.textContent = data.message;
+        message.classList.add("animate");
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 3000);
         submit.disabled = false;
       }
     } catch (error) {
       console.log(`Error: ${error.message}`);
       message.textContent = "Network Error";
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3100);
       submit.disabled = false;
     }
   });

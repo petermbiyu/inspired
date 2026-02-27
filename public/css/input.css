@@ -109,6 +109,7 @@ td .delete {
 /* animate message pop up */
 .animate {
   overflow: hidden;
+  position: fixed;
 }
 .animate::before {
   content: "";

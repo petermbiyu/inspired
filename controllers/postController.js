@@ -1,11 +1,15 @@
 import { postModel } from "../models/postModel.js";
+import { deleteFile } from "../utlities/imageCleanUp.js";
 
 export const createPost = async (req, res) => {
   const { title, body, snippet, topic, slug, description } = req.body;
 
   const imageFile = req.file;
 
-  if (!title || !body || !snippet || topic || !slug || !description) {
+  if (!title || !body || !snippet || !topic || !slug || !description) {
+    if (imageFile) {
+      await deleteFile(imageFile.filename);
+    }
     return res.status(400).json({
       success: false,
       message: "All fields are required",
@@ -17,8 +21,20 @@ export const createPost = async (req, res) => {
       message: "Image is required",
     });
   }
-
-  const imageName = imageFile.filename;
+  const titleExist = await postModel.findOne({ title });
+  if (titleExist) {
+    await deleteFile(imageFile.filename);
+    return res
+      .status(400)
+      .json({ success: false, message: "Similar title exist" });
+  }
+  const slugExist = await postModel.findOne({ slug });
+  if (slugExist) {
+    await deleteFile(imageFile.filename);
+    return res
+      .status(400)
+      .json({ success: false, message: "slug already exists" });
+  }
 
   try {
     const newPost = new postModel({
@@ -26,7 +42,7 @@ export const createPost = async (req, res) => {
       body,
       snippet,
       topic,
-      image: imageName,
+      image: imageFile.filename,
       slug,
       description,
     });
@@ -39,15 +55,21 @@ export const createPost = async (req, res) => {
 
 export const viewPost = async (req, res) => {
   try {
-    const allPost = await postModel.find().sort({ createdAt: -1 });
+    const { topic } = req.query;
+    let filter = {};
+    if (topic) {
+      filter.topic = { $regex: new RegExp(`^${topic}$`, "i") };
+    }
 
-    if (!allPost) {
+    const posts = await postModel.find(filter).sort({ createdAt: -1 });
+
+    if (!posts || posts.length === 0) {
       return res
         .status(400)
         .json({ success: false, message: " No posts to display" });
     }
 
-    res.status(200).json({ success: true, count: allPost.length, allPost });
+    res.status(200).json({ success: true, posts });
   } catch (error) {
     console.log("error:", error.message);
     res.status(500).json({ success: false, message: "Server Error" });

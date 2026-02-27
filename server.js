@@ -35,6 +35,12 @@ app.use("/api/message", contactRoute);
 app.use("/api/admin", postRoute);
 app.use("/api/admin", topicRoutes);
 
+// error handling
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(400).json({ success: false, message: err.message });
+});
+
 // ejs endpoint
 app.get("/", (req, res) => {
   res.render("index");

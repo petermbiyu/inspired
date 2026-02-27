@@ -33,14 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
         message.style.display = "block";
         setTimeout(() => {
           window.location.href = "/admin/topics";
-        }, 3000);
+        }, 2500);
       } else {
         message.textContent = data.message;
         message.style.display = "block";
+        message.classList.add("animate");
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 3000);
       }
     } catch (error) {
       message.textContent = error.message;
       message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
     }
   });
 });
