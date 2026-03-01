@@ -2,7 +2,7 @@ export const allpost = async (topic = null) => {
   let url = "/api/admin/post";
 
   if (topic) {
-    url += `?topic=${encodeURIComponent(topic)}`;
+    url += `/${encodeURIComponent(topic)}`;
   }
   const response = await fetch(url);
 
@@ -11,7 +11,6 @@ export const allpost = async (topic = null) => {
   if (data.success) {
     return data;
   } else {
-    // throw new Error(data.message);
     console.log(data.message); // optional logging
     return { success: false, posts: [] };
   }

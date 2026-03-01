@@ -1,8 +1,10 @@
 import { allpost } from "./services/allPost.js";
 document.addEventListener("DOMContentLoaded", async () => {
   //   get topic
-  const params = new URLSearchParams(window.location.search);
-  const topic = params.get("topic");
+  // const params = new URLSearchParams(window.location.search);
+  // const topic = params.get("topic");
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  const topic = pathParts.length > 1 ? pathParts[1] : null;
 
   //   title
   const title = document.getElementById("blog-title");
@@ -54,7 +56,7 @@ const displayPosts = (posts) => {
           <div
             class="px-4 pb-4 hover:text-blue-700 transition-all duration-300 text-[1rem] text-shadow-xl"
           >
-            <a href="./article/${post.slug}"
+            <a href="/${post.slug}"
               >Read more
               <i class="fa-solid fa-circle-chevron-right text-[1rem]"></i
             ></a>

@@ -54,12 +54,10 @@ app.get("/about", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact");
 });
-app.get("/blogs", (req, res) => {
+app.get("/blogs/:topic", (req, res) => {
   res.render("blogs");
 });
-app.get("/article", (req, res) => {
-  res.render("article");
-});
+
 app.get("/login", (req, res) => {
   res.render("login");
 });
@@ -96,7 +94,7 @@ app.get("/admin/posts", (req, res) => {
 app.get("/admin/add-post", (req, res) => {
   res.render("admin/post/add");
 });
-app.get("/admin/edit", (req, res) => {
+app.get("/admin/edit/:slug", (req, res) => {
   res.render("admin/post/edit");
 });
 // admin topics
@@ -107,6 +105,10 @@ app.get("/admin/add-topic", (req, res) => {
   res.render("admin/topics/add");
 });
 // post upload
+// use slug
+app.get("/:slug", (req, res) => {
+  res.render("article");
+});
 
 app.get((req, res) => {
   res.send("Oops! an error occurred");

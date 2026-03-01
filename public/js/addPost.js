@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData();
     const title = document.getElementById("title").value.trim();
-    const body = editorInstance.getData().trim();
-    const snippet = document.getElementById("snippet").value.trim();
+    const body = tinymce.get("bodyEditor").getContent().trim();
+    const snippet = tinymce.get("snippetEditor").getContent().trim();
     const topic = document.getElementById("topic").value.trim();
     const slug = document.getElementById("slug").value.trim();
     const description = document.getElementById("description").value.trim();

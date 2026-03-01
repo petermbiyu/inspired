@@ -78,15 +78,19 @@
 }
 
 /* ckeditor */
-div.ck-editor__editable {
-  border: 2px solid rgba(0, 255, 255, 0.342) !important;
 
-  outline: none;
-  height: 20rem;
+.tox-tinymce {
+  border-radius: 8px !important;
+  border: 2px solid #caf5fd !important; /* cyan */
+  height: 700px !important;
 }
-div.ck-editor__editable:focus {
-  outline: none !important;
-  background-color: 1px solid rgba(0, 255, 255, 0.199) !important;
+#snippet-editor .tox-tinymce {
+  height: 250px !important;
+  background-color: #cafbfd !important;
+}
+
+.tox .tox-toolbar {
+  background-color: #ecfeff !important;
 }
 
 /* table styling */
@@ -141,4 +145,54 @@ td .delete {
 .link:hover {
   color: rgb(252, 206, 0);
   transition: all 0.5s ease;
+}
+
+/* blogs */
+.blog-content h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.blog-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.blog-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+/* blogs */
+.blog-content ul li {
+  list-style-type: circle;
+  margin-left: 2rem;
+  margin-top: 5px;
+}
+.blog-content ol li {
+  list-style-type: decimal;
+  margin-left: 2rem;
+  margin-top: 5px;
+}
+
+.blog-content p {
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .blog-content ul li {
+    list-style-type: circle;
+    margin-left: 2rem;
+    margin-top: 5px;
+    font-size: 1rem;
+  }
+  .blog-content ol li {
+    list-style-type: decimal;
+    margin-left: 2rem;
+    margin-top: 5px;
+    font-size: 1rem;
+  }
+  .blog-content p {
+    font-size: 1rem;
+  }
 }

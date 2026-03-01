@@ -52,22 +52,11 @@
                 ><br />
                 <textarea
                   name="body"
-                  id="editor"
-                  placeholder="Add post body"
-                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[20rem] resize-none rounded-[3px]"
+                  id="bodyEditor"
+                  class="editor border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[20rem] resize-none rounded-[3px]"
                 ></textarea>
               </div>
-              <div class="mb-4">
-                <label for="snippet" class="text-[1rem] font-semibold mb-2"
-                  >Snippet</label
-                ><br />
-                <textarea
-                  name="snippet"
-                  placeholder="Add post snippet"
-                  id="snippet"
-                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[5rem] resize-none rounded-[3px]"
-                ></textarea>
-              </div>
+
               <div class="mb-4">
                 <label for="topic" class="text-[1rem] font-semibold mb-2"
                   >Topic</label
@@ -82,6 +71,16 @@
                   <option value="technology">Technology</option>
                   <option value="trends">Trends</option>
                 </select>
+              </div>
+              <div class="mb-4">
+                <label for="snippet" class="text-[1rem] font-semibold mb-2"
+                  >Snippet</label
+                ><br />
+                <textarea
+                  name="snippet"
+                  id="snippetEditor"
+                  class="editor border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[5rem] resize-none rounded-[3px]"
+                ></textarea>
               </div>
               <div class="mb-4">
                 <label for="title" class="text-[1rem] font-semibold mb-2"
@@ -132,11 +131,9 @@
     <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
     <!-- CKEditor CDN -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-
-    <script src="/js/script.js"></script>
+    <script src="/tinymce/tinymce.min.js"></script>
     <script src="/js/addPost.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>

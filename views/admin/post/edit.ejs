@@ -21,8 +21,17 @@
           <div class="mt-4">
             <form
               class="w-full md:w-[720px] lg:w-[980px] xl:w-[1240px] bg-white p-4 mx-auto"
-              id="edit-post"
+              id="update-data"
             >
+              <div>
+                <input
+                  type="text"
+                  name="id-No"
+                  id="id-No"
+                  hidden
+                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none rounded-[3px]"
+                />
+              </div>
               <div class="mb-4">
                 <label for="title" class="text-[1rem] font-semibold mb-2"
                   >Title</label
@@ -52,9 +61,34 @@
                 ><br />
                 <textarea
                   name="body"
-                  id="editor"
-                  placeholder="Add post body"
-                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[20rem] resize-none rounded-[3px]"
+                  id="bodyEditor"
+                  class="editor border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[20rem] resize-none rounded-[3px]"
+                ></textarea>
+              </div>
+
+              <div class="mb-4">
+                <label for="topic" class="text-[1rem] font-semibold mb-2"
+                  >Topic</label
+                >
+                <select
+                  name="topic"
+                  id="topic"
+                  class="border-2 border-cyan-100 bg-cyan-50 p-2 w-full outline-none rounded-[3px]"
+                >
+                  <option selected disabled hidden>Select topic</option>
+                  <option value="education">Education</option>
+                  <option value="technology">Technology</option>
+                  <option value="trends">Trends</option>
+                </select>
+              </div>
+              <div id="snippet-editor" class="mb-4">
+                <label for="snippet" class="text-[1rem] font-semibold mb-2"
+                  >Snippet</label
+                ><br />
+                <textarea
+                  name="snippet"
+                  id="snippetEditor"
+                  class="editor border-2 border-cyan-100 bg-cyan-50 p-2 w-full focus:outline-none h-[5rem] resize-none rounded-[3px]"
                 ></textarea>
               </div>
               <div class="mb-4">
@@ -84,7 +118,7 @@
               <div class="mb-4">
                 <input
                   type="submit"
-                  value="Add Post"
+                  value="Submit Post"
                   id="submit"
                   class="border-2 text-white font-semibold border-cyan-500 bg-cyan-500 p-2 w-full cursor-pointer rounded-[3px]"
                 />
@@ -92,10 +126,8 @@
               <div>
                 <p
                   id="message"
-                  class="p-2 font-semibold border-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
-                >
-                  Edit a post
-                </p>
+                  class="px-2 py-3 absolute w-70 top-2 right-2 hidden font-semibold border-b-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
+                ></p>
               </div>
             </form>
           </div>
@@ -108,11 +140,10 @@
     <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
     <!-- CKEditor CDN -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-
+    <script src="/tinymce/tinymce.min.js"></script>
+    <script type="module" src="/js/editpost.js"></script>
+    <script src="/js/updatepost.js"></script>
     <script src="/js/script.js"></script>
-    <script src="/js/postUpload.js"></script>
   </body>
 </html>

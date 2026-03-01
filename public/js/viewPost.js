@@ -14,31 +14,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     data.posts.forEach((post, index) => {
-      const tr = document.createElement("tr");
-      const tNo = document.createElement("td");
-      const tTitle = document.createElement("td");
-      const tedit = document.createElement("td");
-      const tdelete = document.createElement("td");
-      const elink = document.createElement("a");
-      const dlink = document.createElement("a");
-
-      tNo.innerHTML = `${index + 1}.`;
-      tTitle.innerHTML = post.title;
-      elink.href = "/admin/edit";
-      elink.textContent = "Edit";
-      elink.classList.add("edit");
-      tedit.appendChild(elink);
-      tdelete.appendChild(dlink);
-      dlink.href = "/";
-      dlink.textContent = "Delete";
-      dlink.classList.add("delete");
-
-      tr.appendChild(tNo);
-      tr.appendChild(tTitle);
-      tr.appendChild(tedit);
-      tr.appendChild(tdelete);
-
-      tbody.appendChild(tr);
+      tbody.innerHTML += `
+      <tr>
+        <td>${index + 1}.</td>
+        <td>${post.title}</td>
+        <td> <a class="text-green-600 "  href = "/admin/edit/${post.slug}">Edit</a></td>
+        <td>
+          <button class="text-red-600 cursor-pointer" onclick="deletePost('${post._id}')">
+            Delete
+          </button>
+        </td>
+      </tr>
+`;
     });
   } catch (error) {
     console.log(error.message);
