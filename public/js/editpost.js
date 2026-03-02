@@ -25,6 +25,7 @@ const displayPost = (post) => {
   const form = document.getElementById("update-data");
   if (!post) {
     console.log("no post to display");
+    return;
   }
 
   document.getElementById("id-No").value = post._id || "";

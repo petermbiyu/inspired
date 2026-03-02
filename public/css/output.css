@@ -278,9 +278,6 @@
   .bottom-\[10px\] {
     bottom: 10px;
   }
-  .bottom-\[70px\] {
-    bottom: 70px;
-  }
   .left-0 {
     left: calc(var(--spacing) * 0);
   }

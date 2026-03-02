@@ -104,6 +104,9 @@ app.get("/admin/topics", (req, res) => {
 app.get("/admin/add-topic", (req, res) => {
   res.render("admin/topics/add");
 });
+app.get("/admin/topic/:slug", (req, res) => {
+  res.render("admin/topics/edittopic");
+});
 // post upload
 // use slug
 app.get("/:slug", (req, res) => {

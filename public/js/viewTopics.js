@@ -18,31 +18,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     data.topics.forEach((tdata, index) => {
-      const tr = document.createElement("tr");
-      const tNo = document.createElement("td");
-      const tTitle = document.createElement("td");
-      const tedit = document.createElement("td");
-      const tdelete = document.createElement("td");
-      const elink = document.createElement("a");
-      const dlink = document.createElement("a");
+      tbody.innerHTML += `
+        <tr>
+          <td>${index + 1}.</td>
+          <td>${tdata.topic}</td>
+          <td><a href="/admin/topic/${tdata._id}" class="text-green-600">Edit</a></td>
+          <td><button class="delete-btn text-red-600 cursor-pointer" data-id="${tdata._id}">Delete</td>
+        </tr>
 
-      tNo.innerHTML = `${index + 1}.`;
-      tTitle.innerHTML = tdata.topic;
-      elink.href = "/admin/edit";
-      elink.innerHTML = "Edit";
-      elink.classList.add("edit");
-      tedit.appendChild(elink);
-      tdelete.appendChild(dlink);
-      dlink.href = "/";
-      dlink.innerHTML = "Delete";
-      dlink.classList.add("delete");
-
-      tr.appendChild(tNo);
-      tr.appendChild(tTitle);
-      tr.appendChild(tedit);
-      tr.appendChild(tdelete);
-
-      tbody.appendChild(tr);
+`;
     });
   } catch (error) {
     console.log(error.message);
