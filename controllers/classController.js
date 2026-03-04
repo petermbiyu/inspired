@@ -39,3 +39,33 @@ export const joinClass = async (req, res) => {
   }
   res.status(200).json({ success: true, message: "joined class successfully" });
 };
+
+export const getMyClassesTutor = async (req, res) => {
+  const { id } = req.user;
+
+  try {
+    const classes = await classModel.find({ tutor: id });
+    if (!classes) {
+      return res
+        .status(200)
+        .json({ success: false, message: "No class to show" });
+    }
+    res.status(200).json({ success: true, classes });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getMyClassesStudent = async (req, res) => {
+  try {
+    const classes = await classModel.find({ students: req.user.id });
+    if (!classes) {
+      return res
+        .status(200)
+        .json({ success: false, message: "No students to show" });
+    }
+    res.status(200).json({ success: true, classes });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

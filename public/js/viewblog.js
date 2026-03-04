@@ -1,6 +1,9 @@
 import { singlepost } from "./services/singlePost.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const spinner = document.getElementById("spinner");
+  spinner.classList.remove("hidden");
+
   const pathParts = window.location.pathname.split("/").filter(Boolean);
   const slug = pathParts[pathParts.length - 1] || null;
 
@@ -8,6 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await singlepost(slug);
     if (data && data.post) {
       displayPost(data.post);
+      spinner.classList.add("hidden");
     } else {
       console.log(data.message);
     }

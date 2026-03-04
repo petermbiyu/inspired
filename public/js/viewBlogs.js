@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   get topic
   // const params = new URLSearchParams(window.location.search);
   // const topic = params.get("topic");
+
+  const spinner = document.getElementById("spinner");
+  spinner.classList.remove("hidden");
+
   const pathParts = window.location.pathname.split("/").filter(Boolean);
   const topic = pathParts.length > 1 ? pathParts[1] : null;
 
@@ -20,6 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await allpost(topic);
     if (data && data.posts) {
       displayPosts(data.posts);
+      spinner.classList.add("hidden");
     } else {
       console.log(data.posts);
     }
@@ -30,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const displayPosts = (posts) => {
   const blogs = document.getElementById("snippet");
+
   blogs.innerHTML = "";
 
   if (!posts || posts.length === 0) {

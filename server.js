@@ -9,6 +9,7 @@ import { authRouter } from "./routes/authRoutes.js";
 import { contactRoute } from "./routes/contactRoutes.js";
 import { postRoute } from "./routes/postRoutes.js";
 import { topicRoutes } from "./routes/topicsRoutes.js";
+import { classRoutes } from "./routes/classRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -31,6 +32,7 @@ app.listen(port, () => {
 });
 // api endpoint
 app.use("/api/auth", authRouter);
+app.use("/api/classes", classRoutes);
 app.use("/api/message", contactRoute);
 app.use("/api/admin", postRoute);
 app.use("/api/admin", topicRoutes);
