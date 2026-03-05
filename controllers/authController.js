@@ -4,10 +4,11 @@ import nodemailer from "nodemailer";
 import { userModel } from "../models/usermodel.js";
 
 export const signup = async (req, res) => {
-  const { name, email, password, role } = req.body;
-  if (!name || !email || !password || !role) {
+  const { firstName, lastName, email, password, role } = req.body;
+  if (!firstName || !lastName || !email || !password || !role) {
     return res.json({ success: false, message: "Missing details" });
   }
+  const name = `${firstName} ${lastName}`;
   try {
     const existinguser = await userModel.findOne({ email });
     if (existinguser) {

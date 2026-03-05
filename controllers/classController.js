@@ -25,7 +25,7 @@ export const joinClass = async (req, res) => {
       .json({ success: false, message: "Class code is required" });
   }
 
-  if (!req.user.role !== "student") {
+  if (req.user.role !== "student") {
     return res
       .status(403)
       .json({ success: false, message: "Only students are allowed" });
@@ -35,13 +35,16 @@ export const joinClass = async (req, res) => {
   if (!foundClass) {
     return res.status(404).json({ success: false, message: "class not found" });
   }
-  if (!foundClass.students.includes(studentId)) {
-    foundClass.students.push(studentId);
-    await foundClass.save();
+  if (foundClass.students.includes(studentId)) {
+    return res
+      .status(403)
+      .json({ success: false, message: "Already registered." });
   }
+  foundClass.students.push(studentId);
+  await foundClass.save();
   res.status(200).json({ success: true, message: "joined class successfully" });
 };
-
+// retrieve the classes for a teacher
 export const getMyClassesTutor = async (req, res) => {
   const { id } = req.user;
 
@@ -57,7 +60,7 @@ export const getMyClassesTutor = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
-
+// retrieve the classes for a student
 export const getMyClassesStudent = async (req, res) => {
   try {
     const classes = await classModel.find({ students: req.user.id });

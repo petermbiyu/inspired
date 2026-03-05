@@ -27,12 +27,23 @@
           <div class="flex align-center flex-col md:flex-row gap-4">
             <div class="w-full">
               <label for="first-name" class="text-[1.2rem]"
-                >User Name <span class="text-red-500">*</span></label
+                >First Name <span class="text-red-500">*</span></label
               ><br />
               <input
                 type="text"
-                name="user-name"
-                id="user-name"
+                name="first-name"
+                id="first-name"
+                class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+              />
+            </div>
+            <div class="w-full">
+              <label for="last-name" class="text-[1.2rem]"
+                >Last Name <span class="text-red-500">*</span></label
+              ><br />
+              <input
+                type="text"
+                name="last-name"
+                id="last-name"
                 class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
               />
             </div>
@@ -47,6 +58,20 @@
               id="email"
               class="w-full border-2 border-indigo-100 p-[8px] text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
             />
+          </div>
+          <div class="w-full mt-4">
+            <label for="email" class="text-[1.2rem]"
+              >Role <span class="text-red-500">*</span></label
+            >
+            <select
+              name="role"
+              id="role"
+              class="w-full border-2 border-indigo-100 p-3 text-[1.1rem] focus:outline-none rounded-[5px] bg-indigo-50"
+            >
+              <option selected disabled hidden>Select Role</option>
+              <option value="tutor">Tutor</option>
+              <option value="student">Student</option>
+            </select>
           </div>
           <div class="w-full mt-4 relative">
             <label for="password" class="text-[1.2rem]"

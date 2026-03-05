@@ -19,7 +19,7 @@ const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
 
 // == middleware ==
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: `http://localhost:${port}` }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(_dirname, "public")));

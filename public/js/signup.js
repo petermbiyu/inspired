@@ -3,15 +3,17 @@ const formdata = document.getElementById("signup");
 formdata.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("user-name").value.trim();
+  const firstName = document.getElementById("first-name").value.trim();
+  const lastName = document.getElementById("last-name").value.trim();
   const email = document.getElementById("email").value.trim();
+  const role = document.getElementById("role").value.trim();
   const password = document.getElementById("signup-password").value.trim();
   const confirmpass = document.getElementById("confirm-password").value.trim();
   const message = document.getElementById("message");
 
   const submit = document.getElementById("submit");
 
-  if (!name || !email || !password || !confirmpass) {
+  if (!firstName || !lastName || !email || !role || !password || !confirmpass) {
     message.textContent = "Please fill all fields!";
     message.style.backgroundColor = "red";
     message.style.color = "white";
@@ -34,7 +36,14 @@ formdata.addEventListener("submit", async (e) => {
     const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password, confirmpass }),
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        role,
+        password,
+        confirmpass,
+      }),
     });
 
     const data = await response.json();
