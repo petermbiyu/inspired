@@ -5,10 +5,12 @@ export const createClass = async (req, res) => {
   const { classname } = req.body;
   const tutorId = req.user.id;
 
+  const codeIni = classname.substring(0, 3).toUpperCase();
+
   const newClass = await classModel.create({
     classname,
     tutor: tutorId,
-    classCode: generateClassCode(),
+    classCode: `${codeIni}-${generateClassCode()}`,
   });
   res.status(201).json(newClass);
 };
