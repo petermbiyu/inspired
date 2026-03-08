@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
+  const message = document.getElementById("message");
 
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -8,15 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastname = document.getElementById("last-name").value.trim();
     const email = document.getElementById("email").value.trim();
     const textMessage = document.getElementById("message-body").value.trim();
-    const message = document.getElementById("message");
+
     const submit = document.getElementById("submit");
+
+    message.textContent = "";
 
     if (!firstname || !lastname || !email || !textMessage) {
       message.textContent = "Please fill all fields";
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
+
       return;
     }
     submit.disabled = true;
     message.textContent = "Sending...";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
 
     try {
       const response = await fetch("/api/message/contact", {
@@ -28,16 +42,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (data.success) {
         message.textContent = "Message sent successfully";
+        message.style.display = "block";
+        message.classList.add("animate");
+
         setTimeout(() => {
           window.location.href = "/";
-        }, 2000);
+        }, 2800);
       } else {
         message.textContent = data.message;
+        message.style.display = "block";
+        message.classList.add("animate");
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 3000);
         submit.disabled = false;
       }
     } catch (error) {
       console.error(error.message);
       message.textContent = "Something went wrong";
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
       submit.disabled = false;
     }
   });

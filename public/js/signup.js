@@ -15,20 +15,29 @@ formdata.addEventListener("submit", async (e) => {
 
   if (!firstName || !lastName || !email || !role || !password || !confirmpass) {
     message.textContent = "Please fill all fields!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
     return;
   }
   if (password.length < 6) {
     message.textContent = "Password must be at least 6 character!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
     return;
   }
   if (password !== confirmpass) {
     message.textContent = "Passwords do not match!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
     return;
   }
   // submit.disabled = true;
@@ -52,22 +61,29 @@ formdata.addEventListener("submit", async (e) => {
     if (data.success) {
       submit.textContent = "Submitting...";
       message.textContent = "signup success! Redirecting...";
-      message.style.backgroundColor = "green";
-      message.style.color = "white";
+      message.style.display = "block";
+      message.classList.add("animate");
+
       formdata.reset();
       setTimeout(() => {
         window.location.href = "/login";
-      }, 3000);
+      }, 2500);
     } else {
       message.textContent = "Error: " + data.message;
-      message.style.backgroundColor = "red";
-      message.style.color = "white";
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
       submit.disabled = false;
     }
   } catch (error) {
     message.textContent = "Something went wrong. Please try again!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
     console.error("Error: ", error);
     submit.disabled = false;
     submit.textContent = "Signup";

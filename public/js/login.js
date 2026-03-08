@@ -1,4 +1,4 @@
-const formdata = document.getElementById("login");
+const formdata = document.getElementById("loginForm");
 
 formdata.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -8,15 +8,26 @@ formdata.addEventListener("submit", async (e) => {
   const submit = document.getElementById("submit");
   const message = document.getElementById("message");
 
+  message.textContent = "";
+  message.style.display = "none";
+
   if (!email || !password) {
     message.textContent = "Please fill all fields!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
+    return;
   }
   if (password.length < 6) {
     message.textContent = "Password cannot be less than 6!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
+    return;
   }
 
   submit.disabled = true;
@@ -30,23 +41,33 @@ formdata.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (data.success) {
-      message.textContent = "Welcome Back!";
-      message.style.backgroundColor = "green";
-      message.style.color = "white";
+      const profileName = data.user.name.split(" ")[0];
+      window.localStorage.setItem("userName", profileName);
+      window.localStorage.setItem("isLoggedIn", "true");
+
+      message.textContent = `Welcome Back ${profileName}`;
+      message.style.display = "block";
+      message.classList.add("animate");
       setTimeout(() => {
         window.location.href = "/";
-      }, 3000);
+      }, 2500);
     } else {
       message.textContent = data.message;
-      message.style.backgroundColor = "red";
-      message.style.color = "white";
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
       submit.disabled = false;
     }
   } catch (error) {
     console.error("Error: ", error.message);
     message.textContent = "Something went wrong. Please try again later!";
-    message.style.backgroundColor = "red";
-    message.style.color = "white";
+    message.style.display = "block";
+    message.classList.add("animate");
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
     submit.disabled = false;
   }
 });

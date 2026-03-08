@@ -4,6 +4,6 @@ import { loginLimiter } from "../config/ratelimit.js";
 
 export const authRouter = express.Router();
 
-authRouter.post("/signup", signup);
+authRouter.post("/signup", loginLimiter, signup);
 authRouter.post("/login", loginLimiter, login);
 authRouter.post("/logout", logout);

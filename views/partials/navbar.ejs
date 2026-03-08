@@ -11,6 +11,7 @@
     </div>
   </div>
   <!-- desktop nav -->
+
   <ul class="hidden md:flex items-center px-4 h-full font-semibold space-x-1">
     <li class="h-full">
       <a
@@ -22,11 +23,11 @@
     <li class="group h-full relative">
       <span
         class="inline-flex items-center px-4 h-full text-[1.1rem] transition-all duration-300 ease hover:text-yellow-400 rounded-t-lg"
-        >Articles <i class="fa-solid fa-chevron-down pl-[5px] text-[1rem]"></i
+        >Blogs <i class="fa-solid fa-chevron-down pl-[5px] text-[1rem]"></i
       ></span>
       <ul
         id="navtopic"
-        class="hidden border-t border-t-3 bg-transparent backdrop-blur-lg border-t-yellow-500 w-[250px] absolute group-hover:block transition-all duration-300 ease"
+        class="hidden border-t border-t-3 bg-transparent backdrop-blur-lg mt-[-3px] border-t-yellow-500 w-[250px] absolute group-hover:block transition-all duration-300 ease"
       >
         <li class="my-[1rem] ml-[10px] px-4">
           <a
@@ -74,12 +75,27 @@
     </li>
   </ul>
   <!-- login button -->
-  <div>
-    <a
-      href="/logic"
-      class="hidden md:flex md:text-sm lg:text-xl font-semibold hover:text-indigo-500 rounded-full hover:bg-yellow-500 border border-solid border-2 border-white hover:border-yellow-500 transition-colors duration-300 ease p-[7px]"
-      ><i class="fa-solid fa-arrow-right text-[1rem]"></i
-    ></a>
+  <div class="hidden md:flex flex-row gap-1 items-center">
+    <div class="px-3 h-full font-bold text-[1.2rem] italic">
+      <span id="profile"></span>
+    </div>
+    <div>
+      <a
+        href="/login"
+        id="access"
+        class="hidden md:text-sm lg:text-xl font-semibold hover:text-cyan-500 rounded-full hover:bg-white border border-solid border-2 border-white hover:border-white transition-colors duration-300 ease p-[7px]"
+        ><span class="w-5 h-5 flex justify-center items-center"
+          ><i class="fa-solid fa-arrow-right text-[1rem]"></i></span
+      ></a>
+      <button
+        id="logout"
+        class="hidden md:text-sm lg:text-xl font-semibold hover:text-cyan-500 rounded-full hover:bg-white border border-solid border-2 border-white hover:border-white transition-colors duration-300 ease p-[7px]"
+      >
+        <span class="w-5 h-5 flex justify-center items-center"
+          ><i class="fa-solid fa-arrow-right-from-bracket"></i
+        ></span>
+      </button>
+    </div>
   </div>
   <div class="md:hidden">
     <i class="fa-solid fa-bars text-2xl cursor-pointer"></i>
