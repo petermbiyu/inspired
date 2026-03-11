@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
   <!-- header  -->
-  <%-include ("./partials/header.ejs")%>
+  <%-include ("../partials/header.ejs")%>
   <!-- end header -->
   <body
     class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
   >
     <div>
       <!-- navbar -->
-      <%-include ("./partials/navbar.ejs")%>
+      <%-include ("../partials/navbar.ejs")%>
       <!-- end navbar -->
       <div class="text-white py-3">
         <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center">
@@ -19,37 +19,8 @@
 
     <section class="bg-blue-50">
       <div class="md:grid md:grid-cols-[20%_80%]">
-        <div class="h-full bg-cyan-500">
-          <div
-            class="flex flex-row md:flex-col h-full gap-1 px-1 text-[0.9rem] md:text-[1.1rem]"
-          >
-            <div
-              class="w-full p-1 py-4 text-center md:p-4 bg-yellow-500 text-white font-semibold md:my-3 md:hover:pl-5 hover:bg-yellow-400 transition-all duration-300 cursor-pointer"
-            >
-              Home
-            </div>
-            <div
-              class="w-full px-1 py-4 text-center md:p-4 bg-yellow-500 text-white font-semibold md:mb-3 md:hover:pl-5 hover:bg-yellow-400 transition-all duration-300 cursor-pointer"
-            >
-              Course
-            </div>
-            <div
-              class="w-full p-1 py-4 text-center md:p-4 bg-yellow-500 text-white font-semibold md:mb-3 md:hover:pl-5 hover:bg-yellow-400 transition-all duration-300 cursor-pointer"
-            >
-              Classes
-            </div>
-            <div
-              class="w-full p-1 py-4 text-center md:p-4 bg-yellow-500 text-white font-semibold md:mb-3 md:hover:pl-5 hover:bg-yellow-400 transition-all duration-300 cursor-pointer"
-            >
-              Students
-            </div>
-            <div
-              class="w-full p-1 py-4 text-center md:p-4 bg-yellow-500 text-white font-semibold md:mb-3 md:hover:pl-5 hover:bg-yellow-400 transition-all duration-300 cursor-pointer"
-            >
-              Message
-            </div>
-          </div>
-        </div>
+        <!-- side nav -->
+        <%- include("../partials/tutorSideNav.ejs")%>
         <div
           class="flex min-h-[calc(100vh-390px)] flex-col md:flex-row justify-center items-center md:gap-6"
         >
@@ -90,7 +61,7 @@
     </section>
 
     <!-- footer -->
-    <%- include ("./partials/footer.ejs")%>
+    <%- include ("../partials/footer.ejs")%>
     <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

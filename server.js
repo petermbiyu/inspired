@@ -72,9 +72,7 @@ app.get("/passreset", (req, res) => {
 app.get("/signup", (req, res) => {
   res.render("signup");
 });
-app.get("/logic", (req, res) => {
-  res.render("logic");
-});
+
 app.get("/learning", (req, res) => {
   res.render("learningArea");
 });
@@ -83,6 +81,18 @@ app.get("/resources", (req, res) => {
 });
 app.get("/terms", (req, res) => {
   res.render("terms");
+});
+
+// academic pages
+
+app.get("/academic", (req, res) => {
+  res.render("academic/logic");
+});
+app.get("/academic/course", (req, res) => {
+  res.render("academic/course");
+});
+app.get("/academic/classes", (req, res) => {
+  res.render("academic/classes");
 });
 
 // admin pages
