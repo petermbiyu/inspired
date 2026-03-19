@@ -2,17 +2,22 @@ import { classModel } from "../models/classModel.js";
 import { generateClassCode } from "../utlities/generateClassCode.js";
 
 export const createClass = async (req, res) => {
-  const { classname } = req.body;
+  const { className, classLevel } = req.body;
   const tutorId = req.user.id;
 
-  const codeIni = classname.substring(0, 3).toUpperCase();
+  if (!className || !classLevel) {
+    return res.status(400).json({ success: false, message: "Missing details" });
+  }
+
+  const codeIni = className.substring(0, 3).toUpperCase();
 
   const newClass = await classModel.create({
-    classname,
+    className,
+    classLevel,
     tutor: tutorId,
     classCode: `${codeIni}-${generateClassCode()}`,
   });
-  res.status(201).json(newClass);
+  res.status(201).json({ success: true, newClass });
 };
 
 export const joinClass = async (req, res) => {
@@ -49,8 +54,10 @@ export const getMyClassesTutor = async (req, res) => {
   const { id } = req.user;
 
   try {
-    const classes = await classModel.find({ tutor: id });
-    if (!classes) {
+    const classes = await classModel
+      .find({ tutor: id })
+      .sort({ createdAt: -1 });
+    if (classes.length === 0) {
       return res
         .status(200)
         .json({ success: false, message: "No class to show" });

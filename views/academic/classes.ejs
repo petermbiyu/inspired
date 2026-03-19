@@ -6,80 +6,87 @@
   <body
     class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
   >
+    <!-- add class -->
+
     <div>
       <!-- navbar -->
       <%-include ("../partials/navbar.ejs")%>
       <!-- end navbar -->
       <div class="text-white py-3">
         <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center">
-          Academic
+          My Classes
         </h2>
       </div>
     </div>
 
     <section class="bg-blue-50">
       <div class="md:grid md:grid-cols-[20%_80%]">
+        <!--md:grid md:grid-cols-[20%_80%]-->
         <!-- side nave -->
         <%- include("../partials/tutorSideNav.ejs")%>
-        <div
-          class="flex min-h-[calc(100vh-390px)] flex-col md:flex-row justify-center items-center md:gap-6"
-        >
+        <div class="relative w-full h-full">
           <div
-            class="w-80 h-60 p-4 my-8 bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
+            id="add-form"
+            class="hidden absolute w-full h-full bg-cyan-500/[40%] z-100"
           >
-            <h2 class="text-2xl font-semibold text-center">Mathematics</h2>
-            <div class="my-2 text-[1rem]">
-              <div class="italic">Level: Grade 10</div>
-              <div class="italic">Code: MAT-LF34LJ</div>
-              <div class="italic">Enrollment: 50</div>
-              <div class="italic">Date: 11-03-2026</div>
-            </div>
-
-            <div class="w-full flex items-center justify-center">
-              <a
-                href="/academic/course"
-                class="inline-flex items-center justify-center w-[50px] h-[50px] rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-2"
-                ><i class="fa-solid fa-arrow-up-right-from-square"></i
-              ></a>
-            </div>
+            <span
+              id="toggle-cross"
+              class="absolute cursor-pointer right-[10px] top-[10px] text-red-500"
+              ><i class="fa-regular fa-circle-xmark text-3xl"></i
+            ></span>
+            <form
+              id="add-class"
+              class="bg-cyan-700 w-100 bg-white mx-auto mt-20"
+            >
+              <div class="p-4">
+                <label for="class">Class</label><br />
+                <input
+                  type="text"
+                  id="class-name"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-4">
+                <label for="class">Grade/Level</label><br />
+                <input
+                  type="text"
+                  id="class-level"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-4">
+                <input
+                  type="submit"
+                  id="submit"
+                  value="Add Class"
+                  class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                />
+              </div>
+            </form>
           </div>
-          <div
-            class="w-80 h-60 p-4 my-8 bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
-          >
-            <h2 class="text-2xl font-semibold text-center">Computer</h2>
-            <div class="my-2 text-[1rem]">
-              <div class="italic">Level: Form 3</div>
-              <div class="italic">Strand: Data representaion</div>
-              <div class="italic">Substrand: Number conversions</div>
-              <div class="italic">Date: 11-03-2026</div>
+          <div>
+            <div>
+              <button
+                id="display-add-form"
+                class="my-2 ml-4 border-cyan-800 p-3 bg-cyan-800 text-white font-bold cursor-pointer"
+              >
+                Add Class
+              </button>
             </div>
-
-            <div class="w-full flex items-center justify-center">
-              <a
-                href="/learning"
-                class="inline-flex items-center justify-center w-[50px] h-[50px] rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-2"
-                ><i class="fa-solid fa-arrow-up-right-from-square"></i
-              ></a>
-            </div>
-          </div>
-          <div
-            class="w-80 h-60 p-4 my-8 bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
-          >
-            <h2 class="text-2xl font-semibold text-center">Mathematics</h2>
-            <div class="my-2 text-[1rem]">
-              <div class="italic">Level: Grade 10</div>
-              <div class="italic">Strand: Indices and logarithms</div>
-            </div>
-
-            <div class="w-full flex items-center justify-center">
-              <a
-                href="/learning"
-                class="inline-flex items-center justify-center w-[50px] h-[50px] rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-2"
-                ><i class="fa-solid fa-arrow-up-right-from-square"></i
-              ></a>
+            <div>
+              <div
+                id="class-card"
+                class="flex min-h-[calc(100vh-390px)] flex-wrap justify-center align-center gap-5"
+              ></div>
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <p
+          id="message"
+          class="px-2 py-3 absolute w-70 top-2 right-2 hidden font-semibold border-b-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
+        ></p>
       </div>
     </section>
 
@@ -88,6 +95,29 @@
     <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/viewclass.js"></script>
+    <script src="/js/addClass.js"></script>
   </body>
 </html>
+
+<!-- <div
+              class="w-80 h-60 p-4 my-8 bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
+            >
+              <h2 class="text-2xl font-semibold text-center">Mathematics</h2>
+              <div class="my-2 text-[1rem]">
+                <div class="italic">Level: Grade 10</div>
+                <div class="italic">Code: MAT-LF34LJ</div>
+                <div class="italic">Enrollment: 50</div>
+                <div class="italic">Date: 11-03-2026</div>
+              </div>
+
+              <div class="w-full flex items-center justify-center">
+                <a
+                  href="/academic/course"
+                  class="inline-flex items-center justify-center w-[50px] h-[50px] rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-2"
+                  ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </div>
+            </div> -->

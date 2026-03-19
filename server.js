@@ -94,6 +94,9 @@ app.get("/academic/course", (req, res) => {
 app.get("/academic/classes", (req, res) => {
   res.render("academic/classes");
 });
+app.get("/academic/create-questions", (req, res) => {
+  res.render("academic/addQuiz");
+});
 
 // admin pages
 app.get("/admin", (req, res) => {

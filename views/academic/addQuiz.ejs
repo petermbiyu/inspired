@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("../partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <!-- add class -->
+
+    <div>
+      <!-- navbar -->
+      <%-include ("../partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center">
+          My Classes
+        </h2>
+      </div>
+    </div>
+
+    <section class="bg-blue-50">
+      <div class="md:grid md:grid-cols-[20%_80%] min-h-135">
+        <!--md:grid md:grid-cols-[20%_80%]-->
+        <!-- side nave -->
+        <%- include("../partials/tutorSideNav.ejs")%>
+        <div class="relative w-full h-full">
+          <div class="border-b-4 p-4">
+            <div>
+              <label for="question-format" class="text-[1.1rem] font-bold"
+                >Select Question Format</label
+              ><br />
+              <select
+                name="question-format"
+                id="question-format"
+                class="border-2 border-cyan-800 font-semibold focus:outline-none w-[250px] py-1"
+              >
+                <option selected disabled hidden value="">Select Format</option>
+                <option value="quiz">Multiple Choice</option>
+                <option value="short">Short Answer</option>
+                <option value="long">Paragraph</option>
+              </select>
+              <button
+                id="btn-question-format"
+                class="py-1 text-white text-md font-semibold bg-cyan-800 focus:outline-none w-[50px] cursor-pointer"
+              >
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="bg-white w-full max-w-250 border-2 mx-auto my-10">
+            <h2 class="text-2xl text-center font-bold mt-2">Assessment Name</h2>
+            <div class="px-4 py-2">
+              <div>Add assessment questions here</div>
+            </div>
+          </div>
+          <div
+            class="hidden absolute flex justify-center items-center w-full top-0 p-3 bg-cyan-600/[40%]"
+            id="quiz-form"
+          >
+            <form
+              id="add-class"
+              class="relative bg-cyan-700 max-h-max w-full max-w-200 bg-white mx-auto"
+            >
+              <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
+                Multiple Choice Questions
+              </h2>
+              <span
+                id="multiple-close"
+                class="absolute cursor-pointer text-[1.3rem] text-red-500 hover:text-red-700 transition-all duration-300 ease top-2 right-2"
+                ><i class="fa-regular fa-circle-xmark"></i
+              ></span>
+              <div class="px-4 py-2">
+                <label for="class">Add Question</label><br />
+                <input
+                  type="text"
+                  id="class-name"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="px-4 py-2">
+                <label for="class">Answers</label><br />
+                <input
+                  type="text"
+                  id="answer-1"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+                <input
+                  type="text"
+                  id="answer-2"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+                <input
+                  type="text"
+                  id="answer-3"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+                <input
+                  type="text"
+                  id="answer-4"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="px-4 py-2">
+                <label for="class">Correct Answer</label><br />
+                <input type="radio" name="answer" id="radio-1" />
+                <input type="radio" name="answer" id="radio-2" />
+                <input type="radio" name="answer" id="radio-3" />
+                <input type="radio" name="answer" id="radio-4" />
+              </div>
+
+              <div class="p-4">
+                <input
+                  type="submit"
+                  id="submit"
+                  value="Add Class"
+                  class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                />
+              </div>
+            </form>
+          </div>
+
+          <div
+            class="hidden absolute flex justify-center items-center w-full h-full top-0 p-3 bg-cyan-600/[40%]"
+            id="short-form"
+          >
+            <form
+              id="add-class"
+              class="relative bg-cyan-700 max-h-max w-full max-w-200 bg-white mx-auto"
+            >
+              <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
+                Short Answer Question
+              </h2>
+              <span
+                id="short-close"
+                class="absolute cursor-pointer text-[1.3rem] text-red-500 hover:text-red-700 transition-all duration-300 ease top-2 right-2"
+                ><i class="fa-regular fa-circle-xmark"></i
+              ></span>
+              <div class="px-4 py-2">
+                <label for="class">Add Question</label><br />
+                <input
+                  type="text"
+                  id="class-name"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="px-4 py-2">
+                <label for="class">Correct Answer</label><br />
+                <input
+                  type="text"
+                  id="answer-1"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+                <label for="class">Accept</label><br />
+                <input
+                  type="text"
+                  id="answer-2"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+                <input
+                  type="text"
+                  id="answer-3"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+                <input
+                  type="text"
+                  id="answer-4"
+                  class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-4">
+                <input
+                  type="submit"
+                  id="submit"
+                  value="Add Class"
+                  class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                />
+              </div>
+            </form>
+          </div>
+
+          <div
+            class="hidden absolute flex justify-center items-center w-full h-full top-0 p-3 bg-cyan-600/[40%]"
+            id="long-form"
+          >
+            <form
+              id="add-class"
+              class="relative bg-cyan-700 w-full max-h-max max-w-200 bg-white mx-auto"
+            >
+              <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
+                Paragraph Answer
+              </h2>
+              <span
+                id="long-close"
+                class="absolute cursor-pointer text-[1.3rem] text-red-500 hover:text-red-700 transition-all duration-300 ease top-2 right-2"
+                ><i class="fa-regular fa-circle-xmark"></i
+              ></span>
+              <div class="px-4 py-2">
+                <label for="class">Add Question</label><br />
+                <input
+                  type="text"
+                  id="class-name"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="px-4 py-2">
+                <h2>Answer Requirements</h2>
+                <label for="class"> Word Count</label>
+                <input
+                  type="number"
+                  id="answer-1"
+                  class="border-2 border-cyan-600 w-[70px] mb-2 px-2 focus:outline-none rounded-[3px]"
+                />
+              </div>
+              <div class="p-4">
+                <input
+                  type="submit"
+                  id="submit"
+                  value="Add Class"
+                  class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          id="message"
+          class="px-2 py-3 absolute w-70 top-2 right-2 hidden font-semibold border-b-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
+        ></p>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("../partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/viewclass.js"></script>
+    <script src="/js/addClass.js"></script>
+  </body>
+</html>
