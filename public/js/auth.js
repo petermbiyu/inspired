@@ -1,17 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const profileName = document.getElementById("profile");
   const loginBtn = document.getElementById("access");
   const logoutBtn = document.getElementById("logout");
+  const logoutCont = document.getElementById("logout-content");
 
   const username = localStorage.getItem("userName");
   const loginStatus = localStorage.getItem("isLoggedIn") === "true";
 
   if (username && loginStatus) {
-    if (profileName) profileName.textContent = username;
+    if (logoutCont) logoutCont.textContent = username.charAt(0).toUpperCase();
     if (logoutBtn) logoutBtn.style.display = "block";
     if (loginBtn) loginBtn.style.display = "none";
   } else {
-    if (profileName) profileName.textContent = "";
     if (logoutBtn) logoutBtn.style.display = "none";
     if (loginBtn) loginBtn.style.display = "block";
   }

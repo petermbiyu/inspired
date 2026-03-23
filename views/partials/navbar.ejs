@@ -1,5 +1,5 @@
 <nav
-  class="w-full h-[60px] md:h-[70px] px-4 md:px-8 flex items-center justify-between bg-transparent text-white z-[999]"
+  class="w-full h-[60px] md:h-[70px] px-8 md:px-4 flex items-center justify-between bg-transparent text-white z-[999]"
   aria-label="main navbar"
 >
   <!-- logo/brand -->
@@ -76,9 +76,6 @@
   </ul>
   <!-- login button -->
   <div class="hidden md:flex flex-row gap-1 items-center">
-    <div class="px-3 h-full font-bold text-[1.2rem] italic">
-      <span id="profile"></span>
-    </div>
     <div>
       <a
         href="/login"
@@ -91,8 +88,9 @@
         id="logout"
         class="hidden md:text-sm lg:text-xl font-semibold hover:text-cyan-500 rounded-full hover:bg-white border border-solid border-2 border-white hover:border-white transition-colors duration-300 ease p-[7px]"
       >
-        <span class="w-5 h-5 flex justify-center items-center"
-          ><i class="fa-solid fa-arrow-right-from-bracket"></i
+        <span
+          class="w-5 h-5 flex justify-center items-center text-[1rem]"
+          id="logout-content"
         ></span>
       </button>
     </div>

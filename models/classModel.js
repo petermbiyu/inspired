@@ -4,6 +4,7 @@ const classSchema = new mongoose.Schema(
   {
     className: { type: String, required: true },
     classLevel: { type: String, required: true },
+    assessmentTitle: { type: String, required: true },
     tutor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const className = document.getElementById("class-name").value.trim();
     const classLevel = document.getElementById("class-level").value.trim();
+    const assessmentTitle = document
+      .getElementById("assessment-title")
+      .value.trim();
     const submit = document.getElementById("submit");
     const message = document.getElementById("message");
 
@@ -27,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/api/classes/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ className, classLevel }),
+        body: JSON.stringify({ className, classLevel, assessmentTitle }),
       });
 
       const data = await response.json();

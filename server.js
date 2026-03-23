@@ -10,6 +10,7 @@ import { contactRoute } from "./routes/contactRoutes.js";
 import { postRoute } from "./routes/postRoutes.js";
 import { topicRoutes } from "./routes/topicsRoutes.js";
 import { classRoutes } from "./routes/classRoutes.js";
+import { assessmentRoute } from "./routes/assessmentRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ app.use("/api/classes", classRoutes);
 app.use("/api/message", contactRoute);
 app.use("/api/admin", postRoute);
 app.use("/api/admin", topicRoutes);
+app.use("/api/assessment", assessmentRoute);
 
 // error handling
 app.use((err, req, res, next) => {
@@ -94,8 +96,8 @@ app.get("/academic/course", (req, res) => {
 app.get("/academic/classes", (req, res) => {
   res.render("academic/classes");
 });
-app.get("/academic/create-questions", (req, res) => {
-  res.render("academic/addQuiz");
+app.get("/academic/assessment/:id", (req, res) => {
+  res.render("academic/questions");
 });
 
 // admin pages

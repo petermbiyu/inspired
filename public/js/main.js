@@ -118,4 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
   longClose.addEventListener("click", () => {
     longInput.classList.add("hidden");
   });
+
+  // display title
+  const titleElement = document.getElementById("assessment-name");
+  const urlParams = new URLSearchParams(window.location.search);
+  const titleContent = urlParams.get("title");
+  console.log(titleContent);
+  if (!titleContent) {
+    titleElement.textContent = "Assessment Title";
+  } else {
+    titleElement.textContent = titleContent.toUpperCase();
+  }
 });
