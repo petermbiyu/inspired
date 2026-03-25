@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
               <div class="w-full flex mt-3 items-center justify-center text-center text-white font-semibold gap-3 ">
                 <button data-class-id="${classData._id}"  data-assessment-title="${classData.assessmentTitle}"  class="btn-create w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-cyan-800 border-2 text-cyan-800 "><i class="fa-solid fa-plus"></i></button>
-                <button data-class-id="${classData._id}" class="btn-view w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-indigo-800 border-2 text-indigo-800 "><i class="fa-regular fa-eye"></i></button>
-                <button data-class-id="${classData._id}" class="btn-edit w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-yellow-800 border-2 text-yellow-800 "><i class="fa-regular fa-pen-to-square"></i></button>
                 <button data-class-id="${classData._id}" class="btn-publish w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-green-800 border-2 text-green-800 "><i class="fa-solid fa-upload"></i></button>
               </div>
               <button class="absolute top-4 text-red-800  right-4 id="delete-class"><i class="fa-regular fa-circle-xmark"></i><button>

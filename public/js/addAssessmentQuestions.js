@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const forms = document.querySelectorAll("question-form");
+document.addEventListener("DOMContentLoaded", async () => {
+  const forms = document.querySelectorAll(".question-form");
   const message = document.getElementById("message");
+  console.log("assessment loaded");
 
   forms.forEach((form) => {
     form.addEventListener("submit", async (e) => {
@@ -14,16 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let payload = { type };
     // add multiple questions
     if (type === "quiz") {
-      const questionText = document.getElementById(
-        "add-multiple-question",
-      ).value;
+      const questionText = form.querySelector("#add-multiple-question").value;
       const options = [
-        document.getElementById("quiz-answer-1").value,
-        document.getElementById("quiz-answer-2").value,
-        document.getElementById("quiz-answer-3").value,
-        document.getElementById("quiz-answer-4").value,
+        form.querySelector("#quiz-answer-1").value,
+        form.querySelector("#quiz-answer-2").value,
+        form.querySelector("#quiz-answer-3").value,
+        form.querySelector("#quiz-answer-4").value,
       ];
-      const selected = document.querySelector("input[name='radio']:checked");
+      const selected = form.querySelector("input[name='answer']:checked");
       const answer = selected ? selected.value : null;
 
       if (!questionText || options.some((opt) => !opt) || !answer) {
@@ -34,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // add short question
     if (type === "short") {
-      const questionText = document.getElementById("add-short-question").value;
-      const answer = document.getElementById("short-answer-1").value;
+      const questionText = form.querySelector("#add-short-question").value;
+      const answer = form.querySelector("#short-answer-1").value;
 
       if (!questionText || !answer) {
         message.textContent = "All quiz fields are required";
@@ -45,12 +44,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (type === "long") {
-      const questionText = document.getElementById("add-long-question").value;
+      const questionText = form.querySelector("#add-long-question").value;
       if (!questionText) {
         message.textContent = "All quiz fields are required";
         return;
       }
       payload = { ...payload, questionText };
+    }
+
+    try {
+      const pathpart = window.location.pathname.split("/").filter(Boolean);
+      const classId = pathpart[pathpart.length - 1];
+      let url = "/api/assessment/add";
+      if (url) {
+        url += `/${encodeURIComponent(classId)}`;
+      }
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+
+      if (data && data.success) {
+        message.textContent = data.message;
+        message.style.display = "block";
+        message.classList.add("animate");
+        setTimeout(() => {
+          message.style.display = "none";
+          window.location.reload();
+        }, 3000);
+      } else {
+        message.textContent = data.message;
+        message.style.display = "block";
+        message.classList.add("animate");
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 3000);
+      }
+    } catch (error) {
+      message.textContent = error.message;
+      message.style.display = "block";
+      message.classList.add("animate");
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 3000);
     }
   }
 });

@@ -36,14 +36,14 @@ export const createAssessment = async (req, res) => {
 // add question
 export const addQuestions = async (req, res) => {
   const question = req.body;
-  const { assessmentId } = req.params;
-  if (!assessmentId) {
+  const { classId } = req.params;
+  if (!classId) {
     return res
       .status(400)
       .json({ success: false, message: "Error in selecting assessment" });
   }
   try {
-    const assessment = await assessmentModel.findById(assessmentId);
+    const assessment = await assessmentModel.findOne({ classId });
     if (!assessment) {
       return res
         .status(400)

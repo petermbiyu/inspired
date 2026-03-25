@@ -11,7 +11,7 @@ export const assessmentRoute = express.Router();
 
 assessmentRoute.post("/create", protect, restrictTo("tutor"), createAssessment);
 assessmentRoute.post(
-  "/:assessmentId/add-question",
+  "/add/:classId",
   protect,
   restrictTo("tutor"),
   addQuestions,
