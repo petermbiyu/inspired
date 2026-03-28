@@ -90,8 +90,8 @@ app.get("/terms", (req, res) => {
 app.get("/academic", (req, res) => {
   res.render("academic/logic");
 });
-app.get("/academic/course", (req, res) => {
-  res.render("academic/course");
+app.get("/academic/assessments/:classId", (req, res) => {
+  res.render("academic/assessments");
 });
 app.get("/academic/classes", (req, res) => {
   res.render("academic/classes");

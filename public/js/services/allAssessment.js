@@ -1,4 +1,4 @@
-export const singleAssessment = async (classId = null) => {
+export const allAssessments = async (classId = null) => {
   try {
     let url = "/api/assessment/class";
     if (classId) {

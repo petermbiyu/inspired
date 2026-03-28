@@ -66,6 +66,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // assessment toggle
+
+  const AssessEment = document.getElementById("add-assess");
+  const tongleAssessBtn = document.getElementById("display-assess-form");
+  const toggleAssessmentCross = document.getElementById("hide-assess-form");
+  console.log(AssessEment);
+  if (AssessEment && tongleAssessBtn && toggleAssessmentCross) {
+    tongleAssessBtn.addEventListener("click", () => {
+      AssessEment.classList.remove("hidden");
+    });
+    toggleAssessmentCross.addEventListener("click", () => {
+      AssessEment.classList.add("hidden");
+    });
+  }
+
   // select question format
   const formatBtn = document.getElementById("btn-question-format");
   const formatSelect = document.getElementById("question-format");

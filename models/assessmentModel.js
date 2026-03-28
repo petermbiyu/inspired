@@ -23,7 +23,13 @@ const assessmentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    subTopic: {
+      type: String,
+      required: true,
+    },
     questions: [questionSchema],
+    publish: { type: Boolean, default: 0 },
+    expireAt: { type: String },
   },
   { timestamps: true },
 );

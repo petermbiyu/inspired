@@ -1,32 +1,37 @@
 import { assessmentModel } from "../models/assessmentModel.js";
+import { classModel } from "../models/classModel.js";
 
 export const createAssessment = async (req, res) => {
-  const { classId, title } = req.body;
+  const { classId, title, subTopic, publish, expireAt } = req.body;
   const teacherId = req.user.id;
 
-  if (!classId || !title) {
+  if (!classId || !title || !subTopic) {
     return res.status(400).json({ success: false, message: "Missing Details" });
   }
   try {
-    const titleExist = await assessmentModel.findOne({ title });
-    if (titleExist) {
+    const classExist = await classModel.findById(classId);
+    if (!classExist) {
       return res
         .status(400)
-        .json({ success: false, message: "Title already exist" });
+        .json({ success: false, message: "Class Not Found" });
     }
 
     const newAssessment = new assessmentModel({
       classId,
       teacherId,
       title,
+      subTopic,
       questions: [], //empty initially
+      publish,
+      expireAt,
     });
+
     await newAssessment.save();
 
     res.status(201).json({
       success: true,
       message: "Assessment created successfully",
-      data: newAssessment,
+      assessment: newAssessment,
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
@@ -81,7 +86,7 @@ export const getAssessmentByClass = async (req, res) => {
   }
 
   try {
-    const assessment = await assessmentModel.findOne({ classId });
+    const assessment = await assessmentModel.find({ classId });
 
     if (!assessment) {
       return res

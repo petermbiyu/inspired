@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("../partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("../partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center">
+          Courses
+        </h2>
+      </div>
+    </div>
+
+    <section class="bg-blue-50">
+      <div class="md:grid md:grid-cols-[20%_80%]">
+        <!-- side nave -->
+        <%- include("../partials/tutorSideNav.ejs")%>
+        <div class="relative">
+          <div
+            id="add-assess"
+            class="hidden absolute top-0 left-0 w-full h-full bg-cyan-500/[30%] z-100 flex justify-center items-center"
+          >
+            <span
+              id="hide-assess-form"
+              class="absolute top-4 right-8 text-2xl text-red-500 font-semibold hover:text-red-400 transition-all duration-300 ease"
+              ><i class="fa-regular fa-circle-xmark"></i
+            ></span>
+
+            <form id="assess-form" class="bg-white w-full max-w-130 p-4">
+              <h2 class="font-bold text-center text-2xl">Assessment Details</h2>
+              <div class="mb-2">
+                <label for="">Assessment Name</label><br />
+                <input
+                  class="w-full border-2 border-cyan-600 p-2 focus:outline-none text-[1.1rem]"
+                  type="text"
+                  id="assess-name"
+                  placeholder="Assessment name"
+                />
+              </div>
+              <div class="mb-2">
+                <label for="">Subtitle/Substrand</label><br />
+                <input
+                  class="w-full border-2 border-cyan-600 p-2 focus:outline-none text-[1.1rem]"
+                  type="text"
+                  id="assess-subtopic"
+                  placeholder="Subtitle/Substrand"
+                />
+              </div>
+              <div class="my-2">
+                <input type="checkbox" name="publish" id="assess-publish" />
+                <label class="px-4" for="publish">Publish</label>
+              </div>
+              <div class="mb-2">
+                <label for="expire">ExpireAt:</label>
+                <input type="datetime-local" name="expire" id="assess-expire" />
+              </div>
+              <input
+                class="w-full border-2 border-cyan-800 p-2 bg-cyan-800 font-semibold text-white text-[1.1rem] cursor-pointer hover:bg-cyan-700"
+                type="submit"
+                id="assess-submit"
+                value="Add Assessment"
+              />
+            </form>
+          </div>
+          <div class="border-b-2">
+            <button
+              id="display-assess-form"
+              class="my-2 ml-4 border-cyan-800 p-3 bg-cyan-800 text-white font-bold cursor-pointer"
+            >
+              Add Assessment
+            </button>
+          </div>
+          <div
+            id="assessment-cards"
+            class="flex min-h-[calc(100vh-390px)] flex-wrap md:flex-row justify-center items-center gap-5"
+          >
+            <!-- cards -->
+
+            <!-- <div
+              class="max-w-80 p-4 my-8 bg-slate-50 rounded-[5px] shadow-[0px_6px_15px_0px_rgba(0,0,0,0.25)] shadow-gray-500/50"
+            >
+              <h2 class="text-2xl font-semibold text-center">Mathematics</h2>
+              <div class="my-2 text-[1rem]">
+                <div class="italic">Level: Grade 10</div>
+                <div class="italic">Strand: Indices and logarithms</div>
+                <div class="italic">Substrand: Indices</div>
+                <div class="italic">Date: 11-03-2026</div>
+              </div>
+
+              <div class="w-full flex items-center justify-center">
+                <a
+                  href="/learning"
+                  class="inline-flex items-center justify-center w-[50px] h-[50px] rounded-full text-white text-center cursor-pointer bg-slate-500 hover:bg-slate-700 transition-all duration-300 ease mx-auto my-2"
+                  ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          id="message"
+          class="px-2 py-3 absolute w-70 top-2 right-2 hidden font-semibold border-b-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
+        ></p>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("../partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="module" src="/js/allAssessments.js"></script>
+    <script type="module" src="/js/addAssessment.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
