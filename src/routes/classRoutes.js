@@ -1,6 +1,6 @@
 import express from "express";
-import { restrictTo } from "../middlewares/restrictTo.js";
-import { protect } from "../middlewares/protect.js";
+import { restrictTo } from "../src/middlewares/restrictTo.js";
+import { protect } from "../src/middlewares/protect.js";
 import {
   createClass,
   joinClass,

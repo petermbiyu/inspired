@@ -1,5 +1,5 @@
 import express from "express";
-import { uploadMiddleware } from "../config/upload.js";
+import { uploadMiddleware } from "../src/config/upload.js";
 import {
   createPost,
   viewPost,

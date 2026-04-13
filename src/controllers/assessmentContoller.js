@@ -41,14 +41,14 @@ export const createAssessment = async (req, res) => {
 // add question
 export const addQuestions = async (req, res) => {
   const question = req.body;
-  const { classId } = req.params;
-  if (!classId) {
+  const { assessmentId } = req.params;
+  if (!assessmentId) {
     return res
       .status(400)
       .json({ success: false, message: "Error in selecting assessment" });
   }
   try {
-    const assessment = await assessmentModel.findOne({ classId });
+    const assessment = await assessmentModel.findById(assessmentId);
     if (!assessment) {
       return res
         .status(400)
@@ -72,6 +72,58 @@ export const addQuestions = async (req, res) => {
       data: assessment,
       message: "question added successfully",
     });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// teacher view assessment preview
+
+export const getAssessmentPreview = async (req, res) => {
+  const { assessId } = req.params;
+
+  if (!assessId) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Error getting assessment" });
+  }
+  try {
+    const assessment = await assessmentModel.findById(assessId);
+    if (!assessment) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No assessment found" });
+    }
+    res.status(200).json({ success: true, assessment });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+// delete questions
+export const delQuestion = async (req, res) => {
+  const { assessId } = req.params;
+  const { index } = req.body;
+  try {
+    if (!assessId || index === undefined) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Missing details" });
+    }
+
+    const assessment = await assessmentModel.findById(assessId);
+    if (!assessment) {
+      return res
+        .status(400)
+        .json({ success: false, message: "assessment not found" });
+    }
+    if (index < 0 || index >= assessment.questions.length) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid Question" });
+    }
+    assessment.questions.splice(index, 1);
+    await assessment.save();
+    res.status(200).json({ success: true, message: "Deleted Successfully" });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }

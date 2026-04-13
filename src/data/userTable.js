@@ -1,3 +1,5 @@
+import pool from "../config/DBConnect.js";
+
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -14,6 +16,3 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
-
-export const userModel =
-  mongoose.models.user || mongoose.model("user", userSchema);

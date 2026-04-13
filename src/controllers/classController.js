@@ -2,10 +2,10 @@ import { classModel } from "../models/classModel.js";
 import { generateClassCode } from "../utlities/generateClassCode.js";
 
 export const createClass = async (req, res) => {
-  const { className, classLevel, assessmentTitle } = req.body;
+  const { className, classLevel } = req.body;
   const tutorId = req.user.id;
 
-  if (!className || !classLevel || !assessmentTitle) {
+  if (!className || !classLevel) {
     return res.status(400).json({ success: false, message: "Missing details" });
   }
 
@@ -14,7 +14,6 @@ export const createClass = async (req, res) => {
   const newClass = await classModel.create({
     className,
     classLevel,
-    assessmentTitle,
     tutor: tutorId,
     classCode: `${codeIni}-${generateClassCode()}`,
   });

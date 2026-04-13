@@ -1,36 +1,50 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const assessForm = document.getElementById("assess-form");
+import { assessmentQuestion } from "./services/assessmentQuestions.js";
 
-  assessForm.addEventListener("submit", async (e) => {
-    const assessName = document.getElementById("assess-name").value.trim();
-  });
+document.addEventListener("DOMContentLoaded", async () => {
+  const pathPart = window.location.pathname.split("/").filter(Boolean);
+  const assessId = pathPart[pathPart.length - 1];
+
+  const data = await assessmentQuestion(assessId);
+
+  if (data) {
+    displayAssessment(data.assessment);
+  } else {
+    throw new Error();
+  }
 });
+
 function displayAssessment(assessment) {
+  const assessTitle = document.getElementById("assessment-title");
+  const assessQuestions = document.getElementById("assessment-questions");
+
   if (!assessment) {
     console.log("No assessment to display");
     return;
   }
-  title.textContent = assessment.title.toUpperCase();
-  title.classList.add("border-b-2", "border-cyan-400", "mx-4");
-  assessmentCard.innerHTML = "";
+  assessTitle.textContent = assessment.title.toUpperCase();
+  assessTitle.classList.add("border-b-2", "border-cyan-400", "mx-4");
+  assessQuestions.innerHTML = "";
   if (!assessment.questions.length) {
-    assessmentCard.innerHTML = "<p>No questions added yet</p>";
+    assessQuestions.innerHTML = "<p>No questions added yet</p>";
     return;
   }
 
   assessment.questions.forEach((question, index) => {
     const container = document.createElement("div");
     container.classList.add(
+      "question-box",
       "flex",
       "flex-row",
       "justify-between",
       "items-start",
     );
+    container.dataset.index = `${index}`;
 
     const editContainer = document.createElement("div");
     editContainer.classList.add("w-[10%]", "flex", "justify-evenly");
 
     const del = document.createElement("button");
+    del.classList.add("del");
     const iconDel = document.createElement("i");
     iconDel.classList.add(
       "fa-regular",
@@ -41,6 +55,7 @@ function displayAssessment(assessment) {
     del.appendChild(iconDel);
 
     const edit = document.createElement("button");
+    edit.classList.add("edit");
     const iconEdit = document.createElement("i");
     iconEdit.classList.add(
       "fa-regular",
@@ -79,19 +94,6 @@ function displayAssessment(assessment) {
         questions.appendChild(choices);
       });
     }
-    // if (question.type === "short") {
-    //   const input = document.createElement("input");
-    //   input.type = "text";
-    //   input.classList.add("border-2", "p-2");
-
-    //   container.appendChild(input);
-    // }
-    // if (question.type === "long") {
-    //   const textarea = document.createElement("textarea");
-    //   textarea.classList.add("border-2", "p-2");
-
-    //   container.appendChild(textarea);
-    // }
-    assessmentCard.appendChild(container);
+    assessQuestions.appendChild(container);
   });
 }

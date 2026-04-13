@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const pathpart = window.location.pathname.split("/").filter(Boolean);
-      const classId = pathpart[pathpart.length - 1];
+      const assessmentId = pathpart[pathpart.length - 1];
       let url = "/api/assessment/add";
       if (url) {
-        url += `/${encodeURIComponent(classId)}`;
+        url += `/${encodeURIComponent(assessmentId)}`;
       }
 
       const response = await fetch(url, {
