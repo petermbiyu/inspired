@@ -4,29 +4,30 @@ import "dotenv/config";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
-import { dbConnect } from "./src/config/DBConnect.js";
-import { authRouter } from "./src/routes/authRoutes.js";
-import { contactRoute } from "./src/routes/contactRoutes.js";
-import { postRoute } from "./src/routes/postRoutes.js";
-import { topicRoutes } from "./src/routes/topicsRoutes.js";
-import { classRoutes } from "./src/routes/classRoutes.js";
-import { assessmentRoute } from "./src/routes/assessmentRoutes.js";
+import { DBConnect } from "./config/DBConnect.js";
+import { authRouter } from "./routes/authRoutes.js";
+import { contactRoute } from "./routes/contactRoutes.js";
+import { postRoute } from "./routes/postRoutes.js";
+import { topicRoutes } from "./routes/topicsRoutes.js";
+import { classRoutes } from "./routes/classRoutes.js";
+import { assessmentRoute } from "./routes/assessmentRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
-dbConnect();
+DBConnect();
 // es_directory
-const _filename = fileURLToPath(import.meta.url);
-const _dirname = path.dirname(_filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // == middleware ==
 app.use(cors({ credentials: true, origin: `http://localhost:${port}` }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.join(_dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // register view engine
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
@@ -86,18 +87,31 @@ app.get("/terms", (req, res) => {
 });
 
 // academic pages
-
 app.get("/academic", (req, res) => {
-  res.render("academic/logic");
+  res.render("academic/academic");
 });
-app.get("/academic/assessments/:classId", (req, res) => {
-  res.render("academic/assessments");
+// tutor
+app.get("/tutor/assessments/:classId", (req, res) => {
+  res.render("academic/tutor/assessments");
 });
-app.get("/academic/classes", (req, res) => {
-  res.render("academic/classes");
+app.get("/tutor/classes", (req, res) => {
+  res.render("academic/tutor/classes");
 });
-app.get("/academic/assessment/:id", (req, res) => {
-  res.render("academic/questions");
+app.get("/tutor/assessment/:id", (req, res) => {
+  res.render("academic/tutor/questions");
+});
+// learner
+app.get("/learner/classes", (req, res) => {
+  res.render("academic/learner/classes");
+});
+app.get("/learner/assessments/:classId", (req, res) => {
+  res.render("academic/learner/assessments");
+});
+app.get("/learner/assessment/:id", (req, res) => {
+  res.render("academic/learner/questions");
+});
+app.get("/learner/submission/:id", (req, res) => {
+  res.render("academic/learner/assessSubmission");
 });
 
 // admin pages

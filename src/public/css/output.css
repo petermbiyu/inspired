@@ -292,6 +292,9 @@
   .right-\[10px\] {
     right: 10px;
   }
+  .right-\[20px\] {
+    right: 20px;
+  }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
@@ -340,6 +343,9 @@
   .mx-4 {
     margin-inline: calc(var(--spacing) * 4);
   }
+  .mx-8 {
+    margin-inline: calc(var(--spacing) * 8);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -387,6 +393,9 @@
   }
   .mt-\[2rem\] {
     margin-top: 2rem;
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -502,6 +511,9 @@
   .h-full {
     height: 100%;
   }
+  .h-max {
+    height: max-content;
+  }
   .h-screen {
     height: 100vh;
   }
@@ -525,6 +537,9 @@
   }
   .w-32 {
     width: calc(var(--spacing) * 32);
+  }
+  .w-60 {
+    width: calc(var(--spacing) * 60);
   }
   .w-70 {
     width: calc(var(--spacing) * 70);
@@ -550,6 +565,9 @@
   .w-\[40px\] {
     width: 40px;
   }
+  .w-\[50\%\] {
+    width: 50%;
+  }
   .w-\[50px\] {
     width: 50px;
   }
@@ -561,6 +579,9 @@
   }
   .w-\[70px\] {
     width: 70px;
+  }
+  .w-\[80px\] {
+    width: 80px;
   }
   .w-\[100\%\] {
     width: 100%;
@@ -579,6 +600,12 @@
   }
   .w-\[320px\] {
     width: 320px;
+  }
+  .w-\[480px\] {
+    width: 480px;
+  }
+  .w-\[720px\] {
+    width: 720px;
   }
   .w-full {
     width: 100%;
@@ -613,8 +640,20 @@
   .max-w-\[350px\] {
     max-width: 350px;
   }
+  .max-w-\[720px\] {
+    max-width: 720px;
+  }
+  .max-w-\[1024px\] {
+    max-width: 1024px;
+  }
+  .max-w-\[10240px\] {
+    max-width: 10240px;
+  }
   .max-w-full {
     max-width: 100%;
+  }
+  .flex-shrink {
+    flex-shrink: 1;
   }
   .flex-shrink-0 {
     flex-shrink: 0;
@@ -670,6 +709,9 @@
   }
   .justify-center {
     justify-content: center;
+  }
+  .justify-end {
+    justify-content: flex-end;
   }
   .justify-evenly {
     justify-content: space-evenly;
@@ -802,6 +844,9 @@
   }
   .border-blue-200 {
     border-color: var(--color-blue-200);
+  }
+  .border-cyan-50 {
+    border-color: var(--color-cyan-50);
   }
   .border-cyan-50\/50 {
     border-color: color-mix(in srgb, oklch(98.4% 0.019 200.873) 50%, transparent);
@@ -970,6 +1015,9 @@
   }
   .object-cover {
     object-fit: cover;
+  }
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
   }
   .p-1\.5 {
     padding: calc(var(--spacing) * 1.5);
@@ -1181,6 +1229,9 @@
   .text-blue-700 {
     color: var(--color-blue-700);
   }
+  .text-cyan-600 {
+    color: var(--color-cyan-600);
+  }
   .text-cyan-700 {
     color: var(--color-cyan-700);
   }
@@ -1315,6 +1366,10 @@
   }
   .backdrop-blur-lg {
     --tw-backdrop-blur: blur(var(--blur-lg));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .backdrop-filter {
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
@@ -1582,6 +1637,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-yellow-500);
+      }
+    }
+  }
+  .hover\:text-shadow-sm {
+    &:hover {
+      @media (hover: hover) {
+        text-shadow: 0px 1px 0px var(--tw-text-shadow-color, rgb(0 0 0 / 0.075)), 0px 1px 1px var(--tw-text-shadow-color, rgb(0 0 0 / 0.075)), 0px 2px 2px var(--tw-text-shadow-color, rgb(0 0 0 / 0.075));
       }
     }
   }

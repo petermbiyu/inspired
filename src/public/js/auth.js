@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (data && data.success) {
           window.localStorage.removeItem("userName");
+          window.localStorage.removeItem("userRole");
           window.localStorage.removeItem("isLoggedIn");
           message.textContent = `Logged out successfully`;
           message.style.display = "block";

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("../../partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <!-- add class -->
+
+    <div>
+      <!-- navbar -->
+      <%-include ("../../partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center">
+          My Classes
+        </h2>
+      </div>
+    </div>
+
+    <section class="bg-blue-50">
+      <div class="md:grid md:grid-cols-[20%_80%]">
+        <!--md:grid md:grid-cols-[20%_80%]-->
+        <!-- side nave -->
+        <%- include("../../partials/learnerSideNav.ejs")%>
+        <div class="relative w-full h-full">
+          <div
+            id="add-form"
+            class="hidden absolute w-full h-full bg-cyan-500/[40%] z-100"
+          >
+            <span
+              id="toggle-cross"
+              class="absolute cursor-pointer right-[20px] top-[10px] text-red-500"
+              ><i class="fa-regular fa-circle-xmark text-3xl"></i
+            ></span>
+            <form
+              id="join-class"
+              class="bg-cyan-700 w-100 bg-white mx-auto mt-20"
+            >
+              <h2 class="font-bold text-center text-2xl">Class Details</h2>
+              <div class="p-2">
+                <label for="class">Class:</label><br />
+                <input
+                  type="text"
+                  id="class-name"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-2">
+                <label for="class">Class Code:</label><br />
+                <input
+                  type="text"
+                  id="class-code"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+
+              <div class="p-2">
+                <input
+                  type="submit"
+                  id="submit"
+                  value="Join Class"
+                  class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                />
+              </div>
+            </form>
+          </div>
+          <div>
+            <div>
+              <button
+                id="display-add-form"
+                class="my-2 ml-4 border-cyan-800 p-3 bg-cyan-800 text-white font-bold cursor-pointer"
+              >
+                Join Class
+              </button>
+            </div>
+            <div>
+              <div
+                id="learner-card"
+                class="flex min-h-[calc(100vh-390px)] flex-wrap p-2 justify-center align-center gap-5"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          id="message"
+          class="px-2 py-3 absolute w-70 top-2 right-2 hidden font-semibold border-b-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
+        ></p>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("../../partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/academics/learner/viewClass.js"></script>
+    <script src="/js/academics/learner/joinClass.js"></script>
+    <script src="/js/createAssessment.js"></script>
+  </body>
+</html>

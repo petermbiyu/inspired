@@ -1,0 +1,149 @@
+generator client {
+    provider = "prisma-client-js"
+}
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model User {
+    id String @id @default(uuid())
+    username String
+    email String @unique
+    role role @default(learner)
+    password String
+    verifyOtp String?
+    verifyOtpExpireAt Int @default(0)
+    isAccountVerified Boolean @default(false)
+    resetOtp String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    post Post []
+    classesTaught Class [] @relation("tutorClasses")
+    enrollment Enrollment []
+    assessment Assessment[]
+    contact Contact []
+    submission Submission []
+    @@index([email])
+    @@index([role])
+}
+
+model Topic {
+    id Int @id @default(autoincrement())
+    topic String @unique
+    description String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    post Post []
+
+}
+
+model Post {
+    id Int @id @default(autoincrement())
+    title String @unique
+    image String
+    body String
+    snippet String
+    writerId String
+    topicId Int
+    slug String @unique
+    description String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+    writenBy User @relation(fields: [writerId], references: [id]) 
+}
+
+model Contact {
+    id Int @id @default(autoincrement())
+    username String
+    email String
+    message String
+    userId String?
+    user User? @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Class {
+    id String @id @default(uuid())
+    className String
+    classLevel String
+    tutorId String
+    tutor User @relation("tutorClasses", fields: [tutorId], references: [id], onDelete: Cascade)
+    classCode String @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    enrollment Enrollment []
+    assessment Assessment[]
+    @@unique([tutorId, classCode])     
+}
+
+model Enrollment {
+    id String @id @default(uuid())
+    classId String
+    learnerId String
+    createdAt DateTime @default(now())
+    learner User @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+    class Class @relation(fields: [classId], references: [id], onDelete: Cascade)
+    @@unique([classId, learnerId])
+}
+
+model Assessment {
+    id String @id @default(uuid())
+    classId String
+    class Class @relation(fields: [classId], references: [id])
+    tutorId String
+    tutor User @relation(fields: [tutorId], references: [id])
+    title String
+    subTopic String
+    expireAt DateTime?
+    publish Boolean @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    question Question[]
+    submission Submission []
+    @@index([classId])
+    @@index([tutorId])
+    @@index([publish])
+    @@index([expireAt])
+
+}
+
+model Question {
+    id String @id @default(uuid())
+    questionText String
+    type QuestionType
+    option String[]
+    correctAnswer String?
+    order Int @default(autoincrement())
+    assessmentId String
+    assessment Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+    @@index([assessmentId])
+    @@index([order])
+    @@unique([assessmentId, order])
+}
+// submission model
+model Submission {
+    id String @id @default(uuid())
+    assessmentId String
+    learnerId String
+    answer Json
+    score Float?
+    submittedAt DateTime @default(now())
+    assessment Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+    learner User @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+
+    @@unique([assessmentId, learnerId])
+}
+
+enum role {
+    learner
+    tutor
+    admin
+}
+enum QuestionType {
+    quiz
+    short
+    long
+}

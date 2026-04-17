@@ -1,16 +1,13 @@
-import pkg from "pg";
-const { Pool } = pkg;
+import { PrismaClient } from "@prisma/client";
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-});
+export const prisma = new PrismaClient();
 
-pool.on("connect", () => {
-  console.log("Connection pool established");
-});
-
-export default pool;
+export const DBConnect = async () => {
+  try {
+    await prisma.$connect();
+    console.log("DB connection established via prisma");
+  } catch (error) {
+    console.log(`DB Error: ${error.message}`);
+    process.exit(1);
+  }
+};

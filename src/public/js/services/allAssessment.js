@@ -1,6 +1,7 @@
 export const allAssessments = async (classId = null) => {
   try {
     let url = "/api/assessment/class";
+    console.log(classId);
     if (classId) {
       url += `/${encodeURIComponent(classId)}`;
     }

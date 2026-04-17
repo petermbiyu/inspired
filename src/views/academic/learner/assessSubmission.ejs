@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <!-- header  -->
+  <%-include ("../../partials/header.ejs")%>
+  <!-- end header -->
+  <body
+    class="bg-linear-to-r h-screen from-cyan-900 to-cyan-600 md:via-cyan-600 md:to-cyan-500"
+  >
+    <div>
+      <!-- navbar -->
+      <%-include ("../../partials/navbar.ejs")%>
+      <!-- end navbar -->
+      <div class="text-white py-3">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center">
+          My Submission
+        </h2>
+      </div>
+    </div>
+
+    <section class="bg-blue-50">
+      <div class="md:grid md:grid-cols-[20%_80%]">
+        <!-- side nave -->
+        <%- include("../../partials/learnerSideNav.ejs")%>
+        <div class="relative">
+          <div
+            class="flex min-h-[calc(100vh-390px)] flex-wrap md:flex-row justify-center items-center gap-5"
+          >
+            <div class="w-full max-w-[1024px] border-2">
+              <h2 class="text-center text-3xl mx-4 font-semibold border-b-3">
+                assessment-title
+              </h2>
+              <div class="text-[1.1rem]" id="assessmentQuestion"></div>
+              <div class="my-2 flex justify-center">
+                <button
+                  id="restart-btn"
+                  class="py-2 bg-cyan-600 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                >
+                  Restart
+                </button>
+                <button
+                  id="next-btn"
+                  class="py-2 bg-cyan-600 mx-4 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                >
+                  Next
+                </button>
+                <button
+                  id="skip-btn"
+                  class="py-2 bg-cyan-600 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                >
+                  Skip
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          id="message"
+          class="px-2 py-3 absolute w-70 top-2 right-2 hidden font-semibold border-b-2 border-cyan-100 text-cyan-700 bg-cyan-50 text-center"
+        ></p>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <%- include ("../../partials/footer.ejs")%>
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="module" src="/js/addAssessment.js"></script>
+    <script
+      type="module"
+      src="/js/academics/learner/assessQuestions.js"
+    ></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

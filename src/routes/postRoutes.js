@@ -1,5 +1,5 @@
 import express from "express";
-import { uploadMiddleware } from "../src/config/upload.js";
+import { uploadMiddleware } from "../config/upload.js";
 import {
   createPost,
   viewPost,
@@ -11,7 +11,7 @@ import {
 export const postRoute = express.Router();
 
 postRoute.post("/post", uploadMiddleware, createPost);
-postRoute.post("/update", uploadMiddleware, updatePost);
+postRoute.put("/update", uploadMiddleware, updatePost);
 postRoute.get("/post", viewPost);
 postRoute.get("/post/:topic", viewPost);
 postRoute.get("/article/:slug", viewSinglePost);

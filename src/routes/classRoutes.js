@@ -1,9 +1,9 @@
 import express from "express";
-import { restrictTo } from "../src/middlewares/restrictTo.js";
-import { protect } from "../src/middlewares/protect.js";
+import { restrictTo } from "../middlewares/restrictTo.js";
+import { protect } from "../middlewares/protect.js";
 import {
   createClass,
-  joinClass,
+  enroll,
   getMyClassesTutor,
   getMyClassesStudent,
 } from "../controllers/classController.js";
@@ -11,11 +11,11 @@ import {
 export const classRoutes = express.Router();
 
 classRoutes.post("/create", protect, restrictTo("tutor"), createClass);
-classRoutes.post("/join", protect, restrictTo("student"), joinClass);
+classRoutes.post("/join", protect, restrictTo("learner"), enroll);
 classRoutes.get("/tutor", protect, restrictTo("tutor"), getMyClassesTutor);
 classRoutes.get(
-  "/student",
+  "/learner",
   protect,
-  restrictTo("student"),
+  restrictTo("learner"),
   getMyClassesStudent,
 );

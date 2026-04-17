@@ -41,10 +41,11 @@ formdata.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (data.success) {
-      const profileName = data.user.name.split(" ")[0];
+      const profileName = data.data.username.split(" ")[0];
+      const userRole = data.data.role;
       window.localStorage.setItem("userName", profileName);
+      window.localStorage.setItem("userRole", userRole);
       window.localStorage.setItem("isLoggedIn", "true");
-
       message.textContent = `Welcome Back ${profileName}`;
       message.style.display = "block";
       message.classList.add("animate");

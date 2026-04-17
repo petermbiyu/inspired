@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (data) {
     displayAssessment(data.assessment);
   } else {
-    throw new Error();
+    console.log("Failed to retrieve assessments");
   }
 });
 
@@ -24,12 +24,12 @@ function displayAssessment(assessment) {
   assessTitle.textContent = assessment.title.toUpperCase();
   assessTitle.classList.add("border-b-2", "border-cyan-400", "mx-4");
   assessQuestions.innerHTML = "";
-  if (!assessment.questions.length) {
+  if (!assessment.question.length) {
     assessQuestions.innerHTML = "<p>No questions added yet</p>";
     return;
   }
 
-  assessment.questions.forEach((question, index) => {
+  assessment.question.forEach((quest, index) => {
     const container = document.createElement("div");
     container.classList.add(
       "question-box",
@@ -68,15 +68,17 @@ function displayAssessment(assessment) {
     editContainer.appendChild(edit);
     editContainer.appendChild(del);
 
-    const questions = document.createElement("p");
-    questions.classList.add("pt-2", "pb-3", "font-semibold");
-    questions.textContent = `${index + 1}. ${question.questionText}`;
-    console.log(question);
+    const questions = document.createElement("div");
+    questions.classList.add("pt-2", "pb-3");
+    const question = document.createElement("p");
+    question.classList.add("font-semibold");
+    question.textContent = `${index + 1}. ${quest.questionText}`;
+    questions.appendChild(question);
     container.appendChild(questions);
     container.appendChild(editContainer);
 
-    if (question.type === "quiz") {
-      question.options.forEach((option) => {
+    if (quest.type === "quiz") {
+      quest.option.forEach((option) => {
         const choices = document.createElement("div");
         choices.classList.add("pl-4", "italic");
 

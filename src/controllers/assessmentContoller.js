@@ -1,32 +1,33 @@
-import { assessmentModel } from "../models/assessmentModel.js";
-import { classModel } from "../models/classModel.js";
+import { success } from "zod";
+import { prisma } from "../config/DBConnect.js";
 
 export const createAssessment = async (req, res) => {
   const { classId, title, subTopic, publish, expireAt } = req.body;
-  const teacherId = req.user.id;
+  const tutorId = req.user.id;
 
   if (!classId || !title || !subTopic) {
     return res.status(400).json({ success: false, message: "Missing Details" });
   }
   try {
-    const classExist = await classModel.findById(classId);
+    const classExist = await prisma.class.findUnique({
+      where: { id: classId },
+    });
     if (!classExist) {
       return res
         .status(400)
         .json({ success: false, message: "Class Not Found" });
     }
 
-    const newAssessment = new assessmentModel({
-      classId,
-      teacherId,
-      title,
-      subTopic,
-      questions: [], //empty initially
-      publish,
-      expireAt,
+    const newAssessment = await prisma.assessment.create({
+      data: {
+        classId,
+        tutorId,
+        title,
+        subTopic,
+        publish,
+        expireAt: new Date(expireAt),
+      },
     });
-
-    await newAssessment.save();
 
     res.status(201).json({
       success: true,
@@ -38,38 +39,55 @@ export const createAssessment = async (req, res) => {
   }
 };
 
-// add question
+// add assessment question
 export const addQuestions = async (req, res) => {
-  const question = req.body;
+  const { type, questionText, options, answer } = req.body;
   const { assessmentId } = req.params;
+  if (!type || !questionText) {
+    return res
+      .status(400)
+      .json({ success: false, message: "type and question cannot be empty" });
+  }
+
   if (!assessmentId) {
     return res
       .status(400)
       .json({ success: false, message: "Error in selecting assessment" });
   }
   try {
-    const assessment = await assessmentModel.findById(assessmentId);
+    const assessment = await prisma.assessment.findUnique({
+      where: { id: assessmentId },
+    });
     if (!assessment) {
       return res
         .status(400)
         .json({ success: false, message: "Assessment not found" });
     }
     // optional check the teacher
-    if (assessment.teacherId.toString() !== req.user.id) {
+    if (assessment.tutorId !== req.user.id) {
       return res
         .status(400)
         .json({ success: false, message: "Not Authorised" });
     }
-    assessment.questions.push(question);
-    const addquestion = await assessment.save();
-    if (!addquestion) {
+    const question = await prisma.question.create({
+      data: {
+        questionText,
+        type,
+        option: options,
+        correctAnswer: answer,
+        assessmentId,
+      },
+      include: { assessment: true },
+    });
+
+    if (!question) {
       return res
         .status(400)
         .json({ success: false, message: "Error adding question." });
     }
     res.status(200).json({
       success: true,
-      data: assessment,
+      data: question,
       message: "question added successfully",
     });
   } catch (error) {
@@ -88,11 +106,15 @@ export const getAssessmentPreview = async (req, res) => {
       .json({ success: false, message: "Error getting assessment" });
   }
   try {
-    const assessment = await assessmentModel.findById(assessId);
+    const assessment = await prisma.assessment.findUnique({
+      where: { id: assessId },
+      include: { question: true },
+    });
     if (!assessment) {
-      return res
-        .status(400)
-        .json({ success: false, message: "No assessment found" });
+      return res.status(404).json({
+        success: false,
+        message: "No questions found in this assessment",
+      });
     }
     res.status(200).json({ success: true, assessment });
   } catch (error) {
@@ -110,7 +132,9 @@ export const delQuestion = async (req, res) => {
         .json({ success: false, message: "Missing details" });
     }
 
-    const assessment = await assessmentModel.findById(assessId);
+    const assessment = await prisma.question.findUnique({
+      where: { id: assessId },
+    });
     if (!assessment) {
       return res
         .status(400)
@@ -133,18 +157,25 @@ export const delQuestion = async (req, res) => {
 export const getAssessmentByClass = async (req, res) => {
   const { classId } = req.params;
 
+  console.log("classid", classId);
   if (!classId) {
     return res.status(400).json({ success: false, message: "Missing ID" });
   }
 
   try {
-    const assessment = await assessmentModel.find({ classId });
-
-    if (!assessment) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing Assessment" });
-    }
+    const assessment = await prisma.assessment.findMany({
+      where: {
+        classId: classId,
+        // publish: true,
+        // OR: [{ expireAt: null }, { expireAt: { gt: new Date() } }],
+      },
+    });
+    console.log("assessment", assessment);
+    // if (assessment.length === 0) {
+    //   return res
+    //     .status(400)
+    //     .json({ success: false, message: "Missing Assessment" });
+    // }
     res.status(200).json({ success: true, assessment: assessment });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });

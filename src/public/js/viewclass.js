@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const classCard = document.getElementById("class-card");
   if (!classCard) return;
   try {
-    const response = await fetch("/api/classes/tutor");
+    const response = await fetch("/api/classes/tutor", {
+      credentials: "include",
+    });
     const data = await response.json();
     if (data && data.success) {
       console.log(data);
@@ -18,12 +20,12 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="my-2 w-full text-[1rem]">
                 <div class="italic">Level: ${classData.classLevel}</div>
                 <div class="italic">Code: ${classData.classCode}</div>
-                <div class="italic">Enrollment: ${classData.students.length}</div>
+                <div class="italic">Enrollment: ${classData._count?.enrollment || 0}</div>
                 <div class="italic">Date: ${new Date(classData.createdAt).toLocaleDateString()}</div>
               </div>
 
               <div class="w-full flex mt-3 items-center justify-center text-center text-white font-semibold gap-3 ">
-                <a href="/academic/assessments/${classData._id}"  class="btn-create w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-cyan-800 border-2 text-cyan-800 "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="/tutor/assessments/${classData.id}"  class="btn-create w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-cyan-800 border-2 text-cyan-800 "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
               </div>
               <button class="absolute top-4 text-red-800  right-4 id="delete-class"><i class="fa-regular fa-circle-xmark"></i><button>
               <button class="absolute top-4 text-green-800  right-12 id="edit-class"><i class="fa-regular fa-pen-to-square"></i><button>

@@ -1,6 +1,6 @@
 import express from "express";
-import { restrictTo } from "../src/middlewares/restrictTo.js";
-import { protect } from "../src/middlewares/protect.js";
+import { restrictTo } from "../middlewares/restrictTo.js";
+import { protect } from "../middlewares/protect.js";
 import {
   createAssessment,
   getAssessmentByClass,
@@ -27,12 +27,12 @@ assessmentRoute.delete(
 assessmentRoute.get(
   "/class/:classId",
   protect,
-  restrictTo("tutor"),
+  restrictTo("tutor", "learner"),
   getAssessmentByClass,
 );
 assessmentRoute.get(
   "/preview/:assessId",
   protect,
-  restrictTo("tutor"),
+  restrictTo("tutor", "learner"),
   getAssessmentPreview,
 );
