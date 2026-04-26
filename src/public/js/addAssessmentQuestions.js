@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const forms = document.querySelectorAll(".question-form");
   const message = document.getElementById("message");
-  console.log("assessment loaded");
 
   forms.forEach((form) => {
     form.addEventListener("submit", async (e) => {
@@ -11,10 +10,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   async function handleForm(form, message) {
-    const type = form.dataset.type;
+    let type = form.dataset.type;
+    let submit = "";
     let payload = { type };
     // add multiple questions
     if (type === "quiz") {
+      submit = document.getElementById("quiz-submit");
       const questionText = form.querySelector("#add-multiple-question").value;
       const options = [
         form.querySelector("#quiz-answer-1").value,
@@ -33,28 +34,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     // add short question
     if (type === "short") {
+      submit = document.getElementById("short-submit");
       const questionText = form.querySelector("#add-short-question").value;
       const answer = form.querySelector("#short-answer-1").value;
+      const option1 = form.querySelector("#short-answer-2").value;
+      const option2 = form.querySelector("#short-answer-3").value;
+      const option3 = form.querySelector("#short-answer-4").value;
+      const options = [option1, option2, option3];
 
       if (!questionText || !answer) {
         message.textContent = "All quiz fields are required";
         return;
       }
-      payload = { ...payload, questionText, answer };
+      payload = { ...payload, questionText, options, answer };
     }
 
     if (type === "long") {
+      submit = document.getElementById("long-submit");
       const questionText = form.querySelector("#add-long-question").value;
-      if (!questionText) {
+      const wordCount = form.querySelector("#word-count").value;
+      if (!questionText || !wordCount) {
         message.textContent = "All quiz fields are required";
         return;
       }
-      payload = { ...payload, questionText };
+
+      payload = { ...payload, questionText, wordCount };
     }
 
     try {
       const pathpart = window.location.pathname.split("/").filter(Boolean);
       const assessmentId = pathpart[pathpart.length - 1];
+      submit.disabled = true;
       let url = "/api/assessment/add";
       if (url) {
         url += `/${encodeURIComponent(assessmentId)}`;
@@ -82,6 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         setTimeout(() => {
           message.style.display = "none";
         }, 3000);
+        submit.disabled = false;
       }
     } catch (error) {
       message.textContent = error.message;
@@ -90,6 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       setTimeout(() => {
         message.style.display = "none";
       }, 3000);
+      submit.disabled = false;
     }
   }
 });

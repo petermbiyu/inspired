@@ -12,7 +12,7 @@ export const addtopic = async (req, res) => {
     return res.status(400).json({ success: false, messsage: "Topic exists" });
   }
   try {
-    const newTopic = await prisma.topic({
+    const newTopic = await prisma.topic.create({
       data: {
         topic,
         description,
@@ -38,7 +38,7 @@ export const alltopics = async (req, res) => {
         .status(400)
         .json({ success: false, message: "No topic found" });
     }
-    res.status(200).json({ success: true, data: topics });
+    res.status(200).json({ success: true, topics });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -46,7 +46,9 @@ export const alltopics = async (req, res) => {
 export const singletopic = async (req, res) => {
   const { id } = req.params;
   try {
-    const topic = await prisma.topic.findUnique({ where: { id: id } });
+    const topic = await prisma.topic.findUnique({
+      where: { id: parseInt(id) },
+    });
     if (!topic) {
       return res
         .status(400)
@@ -55,7 +57,7 @@ export const singletopic = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "successlly retrieved topic",
-      data: topic,
+      topic,
     });
   } catch (error) {
     return res.status(500).json({
@@ -76,7 +78,7 @@ export const updatetopic = async (req, res) => {
   }
   try {
     const topicexist = await prisma.topic.findFirst({
-      where: { topic: topic, NOT: { id: id } },
+      where: { topic: topic, NOT: { id: parseInt(id) } },
     });
 
     if (topicexist) {
@@ -85,7 +87,7 @@ export const updatetopic = async (req, res) => {
         .json({ success: false, message: "Duplicate details" });
     }
     const updatetopics = await prisma.topic.update({
-      where: { id: id },
+      where: { id: parseInt(id) },
       data: { topic, description },
     });
     if (!updatetopics) {

@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         <tr>
           <td>${index + 1}.</td>
           <td>${tdata.topic}</td>
-          <td><a href="/admin/topic/${tdata._id}" class="text-green-600">Edit</a></td>
-          <td><button class="delete-btn text-red-600 cursor-pointer" data-id="${tdata._id}">Delete</td>
+          <td><a href="/admin/topic/${tdata.id}" class="text-green-600">Edit</a></td>
+          <td><button class="delete-btn text-red-600 cursor-pointer" data-id="${tdata.id}">Delete</td>
         </tr>
 
 `;

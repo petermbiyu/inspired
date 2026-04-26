@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS Loaded");
-
   const message = document.getElementById("message");
   // loggin page
   const loginToggle = document.getElementById("login-toggle");
@@ -48,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // add ckass
+  // add class
   const toggleClass = document.getElementById("display-add-form");
+  const toggleUpdateCross = document.getElementById("toggle-update-cross");
   const toggleCross = document.getElementById("toggle-cross");
   const addClassForm = document.getElementById("add-form");
+  const updateClassForm = document.getElementById("update-form");
 
-  console.log("toggleClass:", toggleClass);
-  console.log("addClassForm:", addClassForm);
-
+  // add
   if (toggleClass && addClassForm && toggleCross) {
     toggleClass.addEventListener("click", () => {
       addClassForm.classList.remove("hidden");
@@ -65,19 +63,36 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  // update
+  if (toggleUpdateCross && updateClassForm) {
+    toggleUpdateCross.addEventListener("click", () => {
+      updateClassForm.classList.add("hidden");
+    });
+  }
 
   // assessment toggle
 
   const AssessEment = document.getElementById("add-assess");
+  const updateAssess = document.getElementById("update-assess");
   const tongleAssessBtn = document.getElementById("display-assess-form");
   const toggleAssessmentCross = document.getElementById("hide-assess-form");
-  console.log(AssessEment);
+  const hideUpdateForm = document.getElementById("hide-update-form");
+
+  console.log("updatessess", updateAssess);
+  console.log("hideUpdateForm", hideUpdateForm);
+
   if (AssessEment && tongleAssessBtn && toggleAssessmentCross) {
     tongleAssessBtn.addEventListener("click", () => {
       AssessEment.classList.remove("hidden");
     });
     toggleAssessmentCross.addEventListener("click", () => {
       AssessEment.classList.add("hidden");
+    });
+  }
+  if (updateAssess && hideUpdateForm) {
+    hideUpdateForm.addEventListener("click", () => {
+      console.log("btn clicked");
+      updateAssess.classList.add("hidden");
     });
   }
 
@@ -132,6 +147,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   longClose.addEventListener("click", () => {
     longInput.classList.add("hidden");
+  });
+
+  // update select question format
+  const updateMultiClose = document.getElementById("update-x-multiple");
+  const updateShortClose = document.getElementById("update-short-close");
+  const updateLongClose = document.getElementById("update-long-close");
+
+  const updateQuizInput = document.getElementById("update-quiz");
+  const updateShortInput = document.getElementById("update-short");
+  const updateLongInput = document.getElementById("update-long");
+
+  updateQuizInput.classList.add("hidden");
+  updateShortInput.classList.add("hidden");
+  updateLongInput.classList.add("hidden");
+
+  updateMultiClose.addEventListener("click", () => {
+    updateQuizInput.classList.add("hidden");
+  });
+  updateShortClose.addEventListener("click", () => {
+    updateShortInput.classList.add("hidden");
+  });
+  updateLongClose.addEventListener("click", () => {
+    updateLongInput.classList.add("hidden");
   });
 
   // display title

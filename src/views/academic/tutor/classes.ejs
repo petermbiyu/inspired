@@ -25,6 +25,7 @@
         <!-- side nave -->
         <%- include("../../partials/tutorSideNav.ejs")%>
         <div class="relative w-full h-full">
+          <!-- add class -->
           <div
             id="add-form"
             class="hidden absolute w-full h-full bg-cyan-500/[40%] z-100"
@@ -66,6 +67,65 @@
               </div>
             </form>
           </div>
+          <!-- edit class -->
+          <div
+            id="update-form"
+            class="hidden absolute w-full h-full bg-cyan-500/[40%] z-100"
+          >
+            <span
+              id="toggle-update-cross"
+              class="absolute cursor-pointer right-[10px] top-[10px] text-red-500"
+              ><i class="fa-regular fa-circle-xmark text-3xl"></i
+            ></span>
+            <form
+              id="update-class"
+              class="bg-cyan-700 w-100 bg-white mx-auto mt-20"
+            >
+              <h2 class="font-bold text-center text-2xl">Class Details</h2>
+              <div>
+                <input
+                  type="text"
+                  id="class-id"
+                  class="hidden border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-2">
+                <label for="class">Class</label><br />
+                <input
+                  type="text"
+                  id="update-class-name"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-2">
+                <label for="class-level">Grade/Level</label><br />
+                <input
+                  type="text"
+                  id="update-class-level"
+                  class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                />
+              </div>
+              <div class="p-2">
+                <input
+                  type="checkbox"
+                  name="class-code"
+                  id="class-code"
+                  class="mr-2"
+                />
+                <label for="class-code">Update Code</label>
+              </div>
+
+              <div class="p-2">
+                <input
+                  type="submit"
+                  id="update-submit"
+                  value="Update Class"
+                  class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                />
+              </div>
+            </form>
+          </div>
+          <!-- add btn -->
           <div>
             <div>
               <button
@@ -102,5 +162,8 @@
     <script src="/js/viewclass.js"></script>
     <script src="/js/addClass.js"></script>
     <script src="/js/createAssessment.js"></script>
+    <script src="/js/editClass.js"></script>
+    <script src="/js/updateClass.js"></script>
+    <script src="/js/deleteClass.js"></script>
   </body>
 </html>

@@ -11,6 +11,11 @@ import { postRoute } from "./routes/postRoutes.js";
 import { topicRoutes } from "./routes/topicsRoutes.js";
 import { classRoutes } from "./routes/classRoutes.js";
 import { assessmentRoute } from "./routes/assessmentRoutes.js";
+import { adminRoutes } from "./routes/adminRoutes.js";
+import { ejsRoutes } from "./routes/ejsPublicRoutes.js";
+import { academicRoutes } from "./routes/academicRoutes.js";
+import { submissionRoutes } from "./routes/submissionRoutes.js";
+import { questRoutes } from "./routes/questionRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -39,6 +44,13 @@ app.use("/api/message", contactRoute);
 app.use("/api/admin", postRoute);
 app.use("/api/admin", topicRoutes);
 app.use("/api/assessment", assessmentRoute);
+app.use("/api/submission", submissionRoutes);
+app.use("/api/question", questRoutes);
+
+// frontend End point
+app.use(ejsRoutes);
+app.use(academicRoutes);
+app.use("/admin", adminRoutes);
 
 // error handling
 app.use((err, req, res, next) => {
@@ -46,98 +58,6 @@ app.use((err, req, res, next) => {
   res.status(400).json({ success: false, message: err.message });
 });
 
-// ejs endpoint
-app.get("/", (req, res) => {
-  res.render("index");
-});
-app.get("/services", (req, res) => {
-  res.render("services");
-});
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-app.get("/contact", (req, res) => {
-  res.render("contact");
-});
-app.get("/blogs/:topic", (req, res) => {
-  res.render("blogs");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-app.get("/reset", (req, res) => {
-  res.render("reset");
-});
-app.get("/passreset", (req, res) => {
-  res.render("passreset");
-});
-app.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
-app.get("/learning", (req, res) => {
-  res.render("learningArea");
-});
-app.get("/resources", (req, res) => {
-  res.render("resources");
-});
-app.get("/terms", (req, res) => {
-  res.render("terms");
-});
-
-// academic pages
-app.get("/academic", (req, res) => {
-  res.render("academic/academic");
-});
-// tutor
-app.get("/tutor/assessments/:classId", (req, res) => {
-  res.render("academic/tutor/assessments");
-});
-app.get("/tutor/classes", (req, res) => {
-  res.render("academic/tutor/classes");
-});
-app.get("/tutor/assessment/:id", (req, res) => {
-  res.render("academic/tutor/questions");
-});
-// learner
-app.get("/learner/classes", (req, res) => {
-  res.render("academic/learner/classes");
-});
-app.get("/learner/assessments/:classId", (req, res) => {
-  res.render("academic/learner/assessments");
-});
-app.get("/learner/assessment/:id", (req, res) => {
-  res.render("academic/learner/questions");
-});
-app.get("/learner/submission/:id", (req, res) => {
-  res.render("academic/learner/assessSubmission");
-});
-
-// admin pages
-app.get("/admin", (req, res) => {
-  res.render("admin/admin");
-});
-//  admin posts
-app.get("/admin/posts", (req, res) => {
-  res.render("admin/post/posts");
-});
-app.get("/admin/add-post", (req, res) => {
-  res.render("admin/post/add");
-});
-app.get("/admin/edit/:slug", (req, res) => {
-  res.render("admin/post/edit");
-});
-// admin topics
-app.get("/admin/topics", (req, res) => {
-  res.render("admin/topics/topics");
-});
-app.get("/admin/add-topic", (req, res) => {
-  res.render("admin/topics/add");
-});
-app.get("/admin/topic/:slug", (req, res) => {
-  res.render("admin/topics/edittopic");
-});
 // post upload
 // use slug
 app.get("/:slug", (req, res) => {

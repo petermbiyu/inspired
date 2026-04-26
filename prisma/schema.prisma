@@ -116,6 +116,7 @@ model Question {
     type QuestionType
     option String[]
     correctAnswer String?
+    wordCount Int?
     order Int @default(autoincrement())
     assessmentId String
     assessment Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
@@ -147,3 +148,4 @@ enum QuestionType {
     short
     long
 }
+

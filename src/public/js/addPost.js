@@ -19,7 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.getElementById("message");
     const submit = document.getElementById("submit");
 
-    if (!title || !body || !slug || !snippet || !description || !image) {
+    if (
+      !title ||
+      !body ||
+      !slug ||
+      !snippet ||
+      !description ||
+      !image ||
+      !topic
+    ) {
       message.textContent = "All fields are required";
       message.style.display = "block";
       message.classList.add("animate");
@@ -54,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const data = await response.json();
-      console.log("data: ", data.message);
+      // console.log("data: ", data.message);
 
       if (data.success) {
         message.textContent = "Upload successful";

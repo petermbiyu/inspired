@@ -22,6 +22,7 @@
         <!-- side nave -->
         <%- include("../../partials/tutorSideNav.ejs")%>
         <div class="relative">
+          <!-- add assessment -->
           <div
             id="add-assess"
             class="hidden absolute top-0 left-0 w-full h-full bg-cyan-500/[30%] z-100 flex justify-center items-center"
@@ -68,6 +69,61 @@
               />
             </form>
           </div>
+          <!-- edit assessment -->
+          <div
+            id="update-assess"
+            class="hidden absolute top-0 left-0 w-full h-full bg-cyan-500/[30%] z-100 flex justify-center items-center"
+          >
+            <span
+              id="hide-update-form"
+              class="absolute top-4 right-8 text-2xl text-red-500 font-semibold hover:text-red-400 transition-all duration-300 ease"
+              ><i class="fa-regular fa-circle-xmark"></i
+            ></span>
+
+            <form id="update-assess-form" class="bg-white w-full max-w-130 p-4">
+              <h2 class="font-bold text-center text-2xl">Assessment Details</h2>
+              <div>
+                <input
+                  class="hidden w-full border-2 border-cyan-600 p-2 focus:outline-none text-[1.1rem]"
+                  type="text"
+                  id="update-id"
+                />
+              </div>
+              <div class="mb-2">
+                <label for="">Assessment Name</label><br />
+                <input
+                  class="w-full border-2 border-cyan-600 p-2 focus:outline-none text-[1.1rem]"
+                  type="text"
+                  id="update-name"
+                  placeholder="Assessment name"
+                />
+              </div>
+              <div class="mb-2">
+                <label for="">Subtitle/Substrand</label><br />
+                <input
+                  class="w-full border-2 border-cyan-600 p-2 focus:outline-none text-[1.1rem]"
+                  type="text"
+                  id="update-subtopic"
+                  placeholder="Subtitle/Substrand"
+                />
+              </div>
+              <div class="my-2">
+                <input type="checkbox" name="publish" id="update-publish" />
+                <label class="px-4" for="publish">Publish</label>
+              </div>
+              <div class="mb-2">
+                <label for="expire">ExpireAt:</label>
+                <input type="datetime-local" name="expire" id="update-expire" />
+              </div>
+              <input
+                class="w-full border-2 border-cyan-800 p-2 bg-cyan-800 font-semibold text-white text-[1.1rem] cursor-pointer hover:bg-cyan-700"
+                type="submit"
+                id="update-submit"
+                value="Update Assessment"
+              />
+            </form>
+          </div>
+
           <div class="border-b-2">
             <button
               id="display-assess-form"
@@ -121,5 +177,8 @@
     <script type="module" src="/js/addAssessment.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/editAssessment.js"></script>
+    <script src="/js/updateAssessment.js"></script>
+    <script src="/js/deleteAssessment.js"></script>
   </body>
 </html>

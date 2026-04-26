@@ -56,6 +56,8 @@ function displayAssessment(assessment) {
 
     const edit = document.createElement("button");
     edit.classList.add("edit");
+    edit.dataset.questType = quest.type;
+    edit.dataset.questId = quest.id;
     const iconEdit = document.createElement("i");
     iconEdit.classList.add(
       "fa-regular",
@@ -71,7 +73,7 @@ function displayAssessment(assessment) {
     const questions = document.createElement("div");
     questions.classList.add("pt-2", "pb-3");
     const question = document.createElement("p");
-    question.classList.add("font-semibold");
+    question.classList.add("font-semibold", "question");
     question.textContent = `${index + 1}. ${quest.questionText}`;
     questions.appendChild(question);
     container.appendChild(questions);
@@ -96,6 +98,29 @@ function displayAssessment(assessment) {
         questions.appendChild(choices);
       });
     }
+    if (quest.type === "short") {
+      const answer = document.createElement("p");
+      answer.classList.add("pl-4", "italic");
+      answer.innerHTML = `<b>Main Ans:</b><br> <span class="pl-4 italic">${quest.correctAnswer}</span>`;
+      questions.appendChild(answer);
+
+      const opts = document.createElement("p");
+      opts.classList.add("pl-4", "italic");
+      opts.innerHTML = "<b>Other Ans:</b>";
+      quest.option.forEach((option) => {
+        const choices = document.createElement("div");
+        choices.classList.add("pl-4", "italic");
+
+        const opt = document.createElement("span");
+        opt.innerHTML = option;
+
+        choices.appendChild(opt);
+
+        opts.appendChild(choices);
+      });
+      questions.appendChild(opts);
+    }
+
     assessQuestions.appendChild(container);
   });
 }

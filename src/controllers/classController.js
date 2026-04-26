@@ -85,6 +85,46 @@ export const getMyClassesTutor = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+export const getSigleClassTutor = async (req, res) => {
+  const { classId } = req.params;
+
+  const classData = await prisma.class.findUnique({ where: { id: classId } });
+  if (!classData) {
+    return res.status(400).json({ success: false, message: "Class not found" });
+  }
+  res.status(200).json({ success: true, message: "success", classData });
+};
+export const updateSigleClassTutor = async (req, res) => {
+  const { className, classLevel, checkCode } = req.body;
+  const { classId } = req.params;
+  let classCode;
+
+  if (!className || !classLevel) {
+    return res.status(400).json({ success: false, message: "Missing details" });
+  }
+
+  if (checkCode) {
+    const codeIni = className.substring(0, 3).toUpperCase();
+    classCode = `${codeIni}-${generateClassCode()}`;
+  }
+  try {
+    if (!checkCode) {
+      const getClass = await prisma.class.findUnique({
+        where: { id: classId },
+      });
+      classCode = getClass.classCode;
+    }
+
+    const updateClass = await prisma.class.update({
+      where: { id: classId },
+      data: { className, classLevel, classCode },
+    });
+
+    res.status(201).json({ success: true, message: "update succesfull" });
+  } catch (error) {
+    res.status(500).json({ success: true, message: error.message });
+  }
+};
 // retrieve the classes for a student
 export const getMyClassesStudent = async (req, res) => {
   const { id } = req.user;
@@ -107,9 +147,43 @@ export const getMyClassesStudent = async (req, res) => {
 
     // extract classes
     const classes = enrollments.map((enroll) => enroll.class);
-    console.log(classes);
     res.status(200).json({ success: true, classes: classes });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
+  }
+};
+export const deleteClassTutor = async (req, res) => {
+  const { classCode } = req.body;
+  const { classId } = req.params;
+
+  if (!classId || !classCode) {
+    return res.status(403).json({ success: false, message: "Missing details" });
+  }
+  try {
+    const getClass = await prisma.class.findUnique({
+      where: { id: classId },
+      include: { assessment: true },
+    });
+    if (!getClass) {
+      return res.status(403).json({ success: false, message: "Missing class" });
+    }
+    if (getClass.assessment.length > 0) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Class contains Assessment" });
+    }
+    const code = getClass.classCode;
+
+    if (code !== classCode.toUpperCase()) {
+      return res
+        .status(403)
+        .json({ success: false, message: "Invalid Class Code" });
+    }
+    const deleteClass = await prisma.class.delete({
+      where: { id: classId },
+    });
+    res.status(200).json({ success: true, message: "Class Deleted" });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
   }
 };

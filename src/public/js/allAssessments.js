@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="w-full flex mt-3 items-center justify-center text-center text-white font-semibold gap-3 ">
                 <a href="/tutor/assessment/${assessmentCard.id}"  class="btn-create w-[40px] leading-[40px] h-[40px] rounded-full cursor-pointer transition-all duration-300 ease hover:text-white hover:bg-cyan-800 border-2 text-cyan-800 "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
               </div>
-              <button class="absolute bottom-4 text-red-800  right-4" id="delete-class"><i class="fa-regular fa-circle-xmark"></i><button>
-              <button class="absolute bottom-4 text-green-800  left-4" id="edit-class"><i class="fa-regular fa-pen-to-square"></i><button>
+              <button class="absolute bottom-4 text-red-800 right-4" data-assessment-id="${assessmentCard.id}" id="delete-class"><i class="fa-regular fa-circle-xmark"></i><button>
+              <button class="absolute bottom-4 text-green-800 left-4" data-assessment-id="${assessmentCard.id}" id="edit-class"><i class="fa-regular fa-pen-to-square"></i><button>
             </div>
           `,
       )

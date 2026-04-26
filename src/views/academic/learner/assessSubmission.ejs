@@ -25,30 +25,92 @@
           <div
             class="flex min-h-[calc(100vh-390px)] flex-wrap md:flex-row justify-center items-center gap-5"
           >
-            <div class="w-full max-w-[1024px] border-2">
-              <h2 class="text-center text-3xl mx-4 font-semibold border-b-3">
+            <div
+              class="w-full max-w-[1024px] p-1 md:p-4 bg-white shadow-[0_10px_30px_5px_rgba(0,0,0,0.25)]"
+            >
+              <h2
+                class="text-center text-2xl md:text-3xl py-2 md:py-4 font-semibold border-b-3"
+                id="assess-title"
+              >
                 assessment-title
               </h2>
-              <div class="text-[1.1rem]" id="assessmentQuestion"></div>
-              <div class="my-2 flex justify-center">
-                <button
-                  id="restart-btn"
-                  class="py-2 bg-cyan-600 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
-                >
-                  Restart
-                </button>
-                <button
-                  id="next-btn"
-                  class="py-2 bg-cyan-600 mx-4 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
-                >
-                  Next
-                </button>
-                <button
-                  id="skip-btn"
-                  class="py-2 bg-cyan-600 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
-                >
-                  Skip
-                </button>
+              <div class="text-[1.1rem] mt-4" id="assessmentQuestion">
+                <h3 class="font-semibold text-[1.3rem]">Please note:</h3>
+                <ol class="list-decimal ml-8">
+                  <li>
+                    The questions will appear one by one and based on the
+                    question type you are expected to select or write the answer
+                    and submit it before proceeding to the next question.
+                  </li>
+                  <li>
+                    Please do not reload the page once the assessment has began
+                    (you have clicked the start button)
+                  </li>
+                  <li>
+                    You can click on the restart button if you want to start
+                    again the assessment
+                  </li>
+                  <li>
+                    Once you reach the final question and submit for analysis
+                    you wont be able to restart or redo the assessment unless
+                    the tutor grants the permission.
+                  </li>
+                </ol>
+              </div>
+
+              <div>
+                <div class="mt-4">
+                  <button
+                    id="save-btn"
+                    class="hidden py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Save
+                  </button>
+                </div>
+                <div class="mt-4 flex justify-center">
+                  <button
+                    id="start-btn"
+                    class="py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Start
+                  </button>
+                  <button
+                    id="restart-btn"
+                    class="hidden py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Restart
+                  </button>
+                  <button
+                    id="next-btn"
+                    class="hidden py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Next
+                  </button>
+                  <button
+                    id="submit-btn"
+                    class="hidden py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    id="skip-btn"
+                    class="hidden py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Skip
+                  </button>
+                  <button
+                    id="send-btn"
+                    class="hidden py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Send
+                  </button>
+                  <button
+                    id="cancel-btn"
+                    class="py-2 bg-cyan-600 mx-1 md:mx-2 cursor-pointer hover:bg-cyan-700 text-white animation duration-300 ease rounded-[5px] w-[80px] font-semibold"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -67,12 +129,10 @@
     <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="module" src="/js/addAssessment.js"></script>
     <script
       type="module"
       src="/js/academics/learner/assessQuestions.js"
     ></script>
     <script src="/js/script.js"></script>
-    <script src="/js/main.js"></script>
   </body>
 </html>

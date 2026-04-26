@@ -64,7 +64,7 @@
           </div>
 
           <div
-            class="bg-white w-full max-w-250 shadow-[0px_3px_10px_rgba(0,0,0,0.3)] py-2 mx-auto my-10"
+            class="bg-white w-full max-w-250 shadow-[0px_3px_10px_rgba(0,0,0,0.3)] py-2 mx-auto my-10 overflow-y-auto no-scrollbar scroll-smooth max-h-[calc(100vh-470px)]"
           >
             <h2
               id="assessment-title"
@@ -81,17 +81,17 @@
               </div>
             </div>
           </div>
-          <!-- add assessment forms  -->
+          <!-- add questions forms  -->
           <div id="add-assessment">
             <!-- multiple choice questions -->
             <div
-              class="hidden absolute flex justify-center items-center w-full top-0 p-3 bg-cyan-600/[40%]"
+              class="hidden absolute flex justify-center items-center w-full h-full top-0 p-3 bg-cyan-600/[40%]"
               id="quiz-form"
             >
               <form
                 id="add-quiz-form"
                 data-type="quiz"
-                class="question-form relative bg-cyan-700 max-h-max w-full max-w-200 bg-white mx-auto"
+                class="question-form absolute top-10 max-h-max w-full max-w-200 bg-white mx-auto"
               >
                 <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
                   Multiple Choice Questions
@@ -134,10 +134,10 @@
                 </div>
                 <div class="px-4 py-2">
                   <label for="class">Correct Answer</label><br />
-                  <input type="radio" name="answer" id="radio-1" value="A" />
-                  <input type="radio" name="answer" id="radio-2" value="B" />
-                  <input type="radio" name="answer" id="radio-3" value="C" />
-                  <input type="radio" name="answer" id="radio-4" value="D" />
+                  <input type="radio" name="answer" id="radio-1" value="0" />
+                  <input type="radio" name="answer" id="radio-2" value="1" />
+                  <input type="radio" name="answer" id="radio-3" value="2" />
+                  <input type="radio" name="answer" id="radio-4" value="3" />
                 </div>
 
                 <div class="p-4">
@@ -158,7 +158,7 @@
               <form
                 id="add-short-form"
                 data-type="short"
-                class="question-form relative bg-cyan-700 max-h-max w-full max-w-200 bg-white mx-auto"
+                class="question-form absolute top-10 max-h-max w-full max-w-200 bg-white mx-auto"
               >
                 <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
                   Short Answer Question
@@ -204,7 +204,7 @@
                   <input
                     type="submit"
                     id="short-submit"
-                    value="Add Class"
+                    value="Add Question"
                     class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
                   />
                 </div>
@@ -218,7 +218,7 @@
               <form
                 id="add-long-form"
                 data-type="long"
-                class="question-form relative bg-cyan-700 w-full max-h-max max-w-200 bg-white mx-auto"
+                class="question-form absolute top-10 max-h-max w-full max-w-200 bg-white mx-auto"
               >
                 <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
                   Paragraph Answer
@@ -233,7 +233,7 @@
                   <input
                     type="text"
                     id="add-long-question"
-                    class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                    class="border-2 border-cyan-600 w-full p-1 focus:outline-none"
                   />
                 </div>
                 <div class="px-4 py-2">
@@ -241,21 +241,234 @@
                   <label for="class"> Word Count</label>
                   <input
                     type="number"
-                    id="long-answer-1"
-                    class="border-2 border-cyan-600 w-[70px] mb-2 px-2 focus:outline-none rounded-[3px]"
+                    id="word-count"
+                    class="border-b-2 border-cyan-600 w-[70px] mb-2 px-2 focus:outline-none"
                   />
                 </div>
                 <div class="p-4">
                   <input
                     type="submit"
                     id="long-submit"
-                    value="Add Class"
+                    value="Add Question"
                     class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
                   />
                 </div>
               </form>
             </div>
           </div>
+          <!-- edit questions forms -->
+          <div id="update-assessment">
+            <!-- multiple choice questions -->
+            <div
+              class="hidden absolute flex justify-center items-center w-full h-full top-0 p-3 bg-cyan-600/[40%]"
+              id="update-quiz"
+            >
+              <form
+                id="update-quiz-form"
+                data-type="quiz"
+                class="update-quest-form relative bg-cyan-700 w-full max-h-full max-w-200 bg-white mx-auto"
+              >
+                <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
+                  Multiple Choice Questions
+                </h2>
+                <span
+                  id="update-x-multiple"
+                  class="absolute cursor-pointer text-[1.3rem] text-red-500 hover:text-red-700 transition-all duration-300 ease top-2 right-2"
+                  ><i class="fa-regular fa-circle-xmark"></i
+                ></span>
+                <div class="px-4 py-2">
+                  <!-- hidden id -->
+                  <input
+                    type="text"
+                    id="update-multi-id"
+                    class="hidden border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                  />
+
+                  <label for="class">Update Question</label><br />
+                  <input
+                    type="text"
+                    id="update-multiple-question"
+                    class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                  />
+                </div>
+                <div class="px-4 py-2">
+                  <label for="Answers">Answers</label><br />
+                  <input
+                    type="text"
+                    id="update-quiz-answer-1"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                  <input
+                    type="text"
+                    id="update-quiz-answer-2"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                  <input
+                    type="text"
+                    id="update-quiz-answer-3"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                  <input
+                    type="text"
+                    id="update-quiz-answer-4"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                </div>
+                <div class="px-4 py-2">
+                  <label for="class">Correct Answer</label><br />
+                  <input
+                    type="radio"
+                    name="update-answer"
+                    id="update-radio-1"
+                    value="0"
+                  />
+                  <input
+                    type="radio"
+                    name="update-answer"
+                    id="update-radio-2"
+                    value="1"
+                  />
+                  <input
+                    type="radio"
+                    name="update-answer"
+                    id="update-radio-3"
+                    value="2"
+                  />
+                  <input
+                    type="radio"
+                    name="update-answer"
+                    id="update-radio-4"
+                    value="3"
+                  />
+                </div>
+
+                <div class="p-4">
+                  <input
+                    type="submit"
+                    id="update-quiz-submit"
+                    value="Update Question"
+                    class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                  />
+                </div>
+              </form>
+            </div>
+            <!-- short answers -->
+            <div
+              class="hidden absolute flex justify-center items-center w-full h-full top-0 p-3 bg-cyan-600/[40%]"
+              id="update-short"
+            >
+              <form
+                id="update-short-form"
+                data-type="short"
+                class="update-quest-form relative bg-cyan-700 max-h-max w-full max-w-200 bg-white mx-auto"
+              >
+                <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
+                  Short Answer Question
+                </h2>
+                <span
+                  id="update-short-close"
+                  class="absolute cursor-pointer text-[1.3rem] text-red-500 hover:text-red-700 transition-all duration-300 ease top-2 right-2"
+                  ><i class="fa-regular fa-circle-xmark"></i
+                ></span>
+                <div class="px-4 py-2">
+                  <input
+                    type="text"
+                    id="update-short-id"
+                    class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                  />
+                  <label for="class">Update Question</label><br />
+                  <input
+                    type="text"
+                    id="update-short-question"
+                    class="border-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                  />
+                </div>
+                <div class="px-4 py-2">
+                  <label for="class">Correct Answer</label><br />
+                  <input
+                    type="text"
+                    id="update-correct"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                  <label for="class">Accept</label><br />
+                  <input
+                    type="text"
+                    id="update-option-1"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                  <input
+                    type="text"
+                    id="update-option-2"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                  <input
+                    type="text"
+                    id="update-option-3"
+                    class="border-2 border-cyan-600 w-full p-2 mb-2 focus:outline-none rounded-[4px]"
+                  />
+                </div>
+                <div class="p-4">
+                  <input
+                    type="submit"
+                    id="update-short-submit"
+                    value="Update Question"
+                    class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                  />
+                </div>
+              </form>
+            </div>
+            <!-- long paragraph questions -->
+            <div
+              class="hidden absolute flex justify-center items-center w-full h-full top-0 p-3 bg-cyan-600/[40%]"
+              id="update-long"
+            >
+              <form
+                id="update-long-form"
+                data-type="long"
+                class="update-quest-form relative bg-cyan-700 w-full max-h-max max-w-200 bg-white mx-auto"
+              >
+                <h2 class="px-4 py-2 text-center font-bold text-[1.2rem]">
+                  Paragraph Answer
+                </h2>
+                <span
+                  id="update-long-close"
+                  class="absolute cursor-pointer text-[1.3rem] text-red-500 hover:text-red-700 transition-all duration-300 ease top-2 right-2"
+                  ><i class="fa-regular fa-circle-xmark"></i
+                ></span>
+                <div class="px-4 py-2">
+                  <input
+                    type="text"
+                    id="update-long-id"
+                    class="hidden border-b-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                  />
+                  <label for="class">Update Question</label><br />
+                  <input
+                    type="text"
+                    id="update-long-question"
+                    class="border-b-2 border-cyan-600 w-full p-2 focus:outline-none rounded-[4px]"
+                  />
+                </div>
+                <div class="px-4 py-2">
+                  <h2>Answer Requirements</h2>
+                  <label for="class"> Word Count</label>
+                  <input
+                    type="number"
+                    id="update-word-count"
+                    class="border-b-2 border-cyan-600 w-[70px] mb-2 px-2 focus:outline-none rounded-[3px]"
+                  />
+                </div>
+                <div class="p-4">
+                  <input
+                    type="submit"
+                    id="update-long-submit"
+                    value="Update Question"
+                    class="border-2 text-white font-bold border-cyan-600 bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 ease hover:border-cyan-600 w-full p-2 focus:outline-none rounded-[4px] cursor-pointer"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end edit forms -->
         </div>
       </div>
       <div>
@@ -273,9 +486,9 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/main.js"></script>
-    <script type="module" src="/js/createAssessment.js"></script>
     <script type="module" src="/js/viewAssessment.js"></script>
     <script src="/js/addAssessmentQuestions.js"></script>
-    <script src="/js/delAssessmentQuestions.js"></script>
+    <script src="/js/editQuestion.js"></script>
+    <script src="/js/updateQuestions.js"></script>
   </body>
 </html>

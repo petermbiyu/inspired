@@ -2,20 +2,12 @@ import { prisma } from "../config/DBConnect.js";
 import { deleteFile } from "../utlities/imageCleanUp.js";
 
 export const createPost = async (req, res) => {
-  const { title, body, snippet, topic, slug, description, topicId } = req.body;
+  const { title, body, snippet, slug, description, topic } = req.body;
 
   const imageFile = req.file;
   const writerId = req.user.id;
 
-  if (
-    !title ||
-    !body ||
-    !snippet ||
-    !topic ||
-    !slug ||
-    !description ||
-    !topicId
-  ) {
+  if (!title || !body || !snippet || !slug || !description || !topic) {
     if (imageFile) {
       await deleteFile(imageFile.filename);
     }
@@ -53,11 +45,10 @@ export const createPost = async (req, res) => {
         title,
         body,
         snippet,
-        topic,
         image: imageFile.filename,
         slug,
         description,
-        topicId: parseInt(topicId),
+        topicId: parseInt(topic),
         writerId,
       },
     });
@@ -86,7 +77,7 @@ export const viewPost = async (req, res) => {
         .json({ success: false, message: " No posts to display" });
     }
 
-    res.status(200).json({ success: true, posts });
+    res.status(200).json({ success: true, posts, message: "success" });
   } catch (error) {
     console.log("error:", error.message);
     await deleteFile(imageFile.filename);
