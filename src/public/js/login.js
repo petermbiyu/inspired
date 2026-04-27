@@ -42,11 +42,17 @@ formdata.addEventListener("submit", async (e) => {
 
     if (data.success) {
       const profileName = data.data.username.split(" ")[0];
+
+      // capitalize the first letter
+      function capitalize(str) {
+        if (!str) return "";
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
       const userRole = data.data.role;
-      window.localStorage.setItem("userName", profileName);
+      window.localStorage.setItem("userName", capitalize(profileName));
       window.localStorage.setItem("userRole", userRole);
       window.localStorage.setItem("isLoggedIn", "true");
-      message.textContent = `Welcome Back ${profileName}`;
+      message.textContent = `Welcome Back ${capitalize(profileName)}`;
       message.style.display = "block";
       message.classList.add("animate");
       setTimeout(() => {

@@ -73,14 +73,23 @@ export const getMyClassesTutor = async (req, res) => {
     const classes = await prisma.class.findMany({
       where: { tutorId: tutorId },
       orderBy: { updatedAt: "desc" },
-      include: { _count: { select: { enrollment: true } } },
+      include: { _count: { select: { enrollment: true, assessment: true } } },
     });
-    if (classes.length === 0) {
-      return res
-        .status(200)
-        .json({ success: false, message: "No class to show" });
-    }
-    res.status(200).json({ success: true, classes });
+    //  dashboard statistics
+    const totalClasses = classes.length;
+    const totalStudents = classes.reduce(
+      (sum, classItems) => sum + classItems._count.enrollment,
+      0,
+    );
+    const totalAssessment = classes.reduce(
+      (sum, classItems) => sum + classItems._count.assessment,
+      0,
+    );
+    res.status(200).json({
+      success: true,
+      classes,
+      dashboard: { totalClasses, totalStudents, totalAssessment },
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

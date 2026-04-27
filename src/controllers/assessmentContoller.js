@@ -198,38 +198,6 @@ export const updateAssessment = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
-// delete questions
-export const delQuestion = async (req, res) => {
-  const { assessId } = req.params;
-  const { index } = req.body;
-  try {
-    if (!assessId || index === undefined) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing details" });
-    }
-
-    const assessment = await prisma.question.findUnique({
-      where: { id: assessId },
-    });
-    if (!assessment) {
-      return res
-        .status(400)
-        .json({ success: false, message: "assessment not found" });
-    }
-    if (index < 0 || index >= assessment.questions.length) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid Question" });
-    }
-    assessment.questions.splice(index, 1);
-    await assessment.save();
-    res.status(200).json({ success: true, message: "Deleted Successfully" });
-  } catch (error) {
-    return res.status(500).json({ success: false, message: error.message });
-  }
-};
-
 // students getaccess
 export const getActiveAssessmentByClass = async (req, res) => {
   const { classId } = req.params;
@@ -242,12 +210,12 @@ export const getActiveAssessmentByClass = async (req, res) => {
     const assessment = await prisma.assessment.findMany({
       where: {
         classId: classId,
-        publish: true,
-        OR: [{ expireAt: null }, { expireAt: { gt: new Date() } }],
+        // publish: true,
+        // OR: [{ expireAt: null }, { expireAt: { gt: new Date() } }],
       },
     });
 
-    if (assessment.length === 0) {
+    if (!assessment) {
       return res
         .status(400)
         .json({ success: false, message: "Missing Assessment" });

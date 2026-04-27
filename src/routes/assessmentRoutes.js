@@ -6,7 +6,6 @@ import {
   getActiveAssessmentByClass,
   getAssessmentPreview,
   addQuestions,
-  delQuestion,
   getSingleAssessment,
   updateAssessment,
   deleteAssessment,
@@ -25,12 +24,6 @@ assessmentRoute.post(
   protect,
   restrictTo("tutor", "admin"),
   addQuestions,
-);
-assessmentRoute.delete(
-  "/question/:assessId",
-  protect,
-  restrictTo("tutor", "admin"),
-  delQuestion,
 );
 assessmentRoute.get(
   "/class/:classId",

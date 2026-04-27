@@ -1,17 +1,16 @@
+import { classes } from "./services/allClass.js";
 document.addEventListener("DOMContentLoaded", async () => {
   const classCard = document.getElementById("class-card");
   if (!classCard) return;
   try {
-    function truncate(string, maxlength = 20) {
+    function truncate(string, maxlength = 17) {
       if (!string) return;
       return string.length > maxlength
         ? string.slice(0, maxlength) + "..."
         : string;
     }
-    const response = await fetch("/api/classes/tutor", {
-      credentials: "include",
-    });
-    const data = await response.json();
+    const data = await classes();
+    console.log("data recieved");
     if (data && data.success) {
       console.log(data);
       const cards = data.classes
@@ -26,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="my-2 w-full text-[1rem]">
                 <div class="italic">Level: ${classData.classLevel}</div>
                 <div class="italic">Code: ${classData.classCode}</div>
+                <div class="italic">Assessments: ${classData._count?.assessment || 0}</div>
                 <div class="italic">Enrollment: ${classData._count?.enrollment || 0}</div>
                 <div class="italic">Date: ${new Date(classData.createdAt).toLocaleDateString()}</div>
               </div>

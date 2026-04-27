@@ -21,9 +21,11 @@ model User {
     post Post []
     classesTaught Class [] @relation("tutorClasses")
     enrollment Enrollment []
-    assessment Assessment[]
+    assessment Assessment[] 
     contact Contact []
-    submission Submission []
+    learnerSubmission Submission []@relation("learner")
+    tutorSubmission Submission []@relation("tutor")
+
     @@index([email])
     @@index([role])
 }
@@ -99,6 +101,8 @@ model Assessment {
     subTopic String
     expireAt DateTime?
     publish Boolean @default(false)
+    totalPoints Float? // total assessment points
+    passingScore Float? //minimum score to pass
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     question Question[]
@@ -117,6 +121,7 @@ model Question {
     option String[]
     correctAnswer String?
     wordCount Int?
+    maxScore Float @default(1.0) //minimum mark
     order Int @default(autoincrement())
     assessmentId String
     assessment Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
@@ -131,9 +136,16 @@ model Submission {
     learnerId String
     answer Json
     score Float?
+    status SubmissionStatus @default(Submitted)
+    tutorId String
+    evaluatedAt DateTime?
+    feedback String?
+    markingData Json?
     submittedAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
     assessment Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
-    learner User @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+    learner User @relation("learner", fields: [learnerId], references: [id], onDelete: Cascade)
+    tutor User? @relation("tutor", fields: [tutorId], references: [id])
 
     @@unique([assessmentId, learnerId])
 }
@@ -147,5 +159,11 @@ enum QuestionType {
     quiz
     short
     long
+}
+enum SubmissionStatus {
+    Submitted
+    In_Review
+    Completed
+    Returned
 }
 

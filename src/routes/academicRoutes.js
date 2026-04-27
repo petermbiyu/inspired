@@ -37,6 +37,14 @@ academicRoutes.get(
     res.render("academic/tutor/questions");
   },
 );
+academicRoutes.get(
+  "/tutor/submission",
+  protect,
+  restrictTo("tutor"),
+  (req, res) => {
+    res.render("academic/tutor/submission");
+  },
+);
 // learner
 academicRoutes.get(
   "/academic/learner/academic",
